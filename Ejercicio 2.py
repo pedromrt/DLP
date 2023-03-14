@@ -9,4 +9,5 @@ if  sueldoTraba>=550:
 else:
     sueldoNuevo=sueldoTraba
     print ("\n Su sueldo es de: $", sueldoTraba)
-    print ("\n Usted no aplica para el aumento.\n")
+    print ("\n Usted no aplica para el aumento.\n") 
+    
