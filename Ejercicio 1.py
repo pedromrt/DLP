@@ -1,0 +1,1 @@
+saldo = float(input("\nIngrese su saldo actual: $"))
