@@ -1,5 +1,5 @@
-salarioMens = float (input("\nIngrese su salario mensual: $"))
-antiguedad = int (input("\nIngrese la cantidad de meses que a estado en la compañia: "))
+salarioMens = float (input ("\nIngrese su salario mensual: $"))
+antiguedad = int (input ("\nIngrese la cantidad de meses que a estado en la compañia: "))
 
 años = antiguedad // 12
 mesesExtr = antiguedad % 12
