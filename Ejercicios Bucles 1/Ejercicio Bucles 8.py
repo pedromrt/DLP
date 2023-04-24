@@ -1,12 +1,12 @@
 n = int(input("\nIngrese el número de empleados: "))
 
 suma = 0
-cont = 0
+i = 1
 
-while cont < n:
+while i <= n:
     monto = float(input("\nIngrese el monto de venta del empleado: $"))
     suma += monto
-    cont += 1
+    i += 1
 
 promedio = suma / n
 
