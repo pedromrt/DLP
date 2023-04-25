@@ -1,5 +1,4 @@
 i = 2
-suma = 0
 while i <= 1800:
     print(i)
     if i % 5 == 0:
