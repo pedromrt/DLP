@@ -1,5 +1,4 @@
-n = int(input("\nIngrese la cantidad de productos en la compra: "))
-print("")
+n = 1
 porcentajeDescuento = 0.10
 totalNoImpuestos = 0
 
@@ -8,10 +7,13 @@ lstCantidad = []
 lstPrecio = []
 lstCanPrecio = [] 
 
-for i in range (0,n,1):
+while n == 1:
     lstProducto.append(input("\nNombre del producto: "))
     lstCantidad.append(int(input("Cantidad: ")))
     lstPrecio.append(float(input("Ingrese el precio por unidad: $")))
+    n = int(input("\n¿Desea añadir otro producto? (Escriba 1 para si y 2 para no)  "))       
+
+for i in range(0,len(lstProducto),1):
     lstCanPrecio.append(lstCantidad[i]*lstPrecio[i])
     totalNoImpuestos += lstCanPrecio[i]
 
