@@ -6,7 +6,7 @@ while continuar == 1:
     lstNombres.append(input("\nIngrese el nombre del empleado: "))
     lstEdad.append(int(input("Ingrese la edad del empleado: ")))
     lstSalario.append(float(input("Ingrese el salario del empleado: $")))
-    continuar = int(input("\n¿Desea añadir otro vector? (Escriba 1 para si y 2 para no)  "))   
+    continuar = int(input("\n¿Desea añadir otro empleado? (Escriba 1 para si y 2 para no)  "))   
 
 salarioMax = max(lstSalario)
 indice = lstSalario.index(salarioMax)
