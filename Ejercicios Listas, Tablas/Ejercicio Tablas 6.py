@@ -8,4 +8,3 @@ for i in range(6):
 
 for i in matriz:
     print(i)
-    
