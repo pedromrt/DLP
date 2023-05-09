@@ -11,7 +11,9 @@ while n == 1:
     lstProducto.append(input("\nNombre del producto: "))
     lstCantidad.append(int(input("Cantidad: ")))
     lstPrecio.append(float(input("Ingrese el precio por unidad: $")))
-    n = int(input("\n¿Desea añadir otro producto? (Escriba 1 para si y 2 para no)  "))       
+    n = int(input("\n¿Desea añadir otro producto? (Escriba 1 para si y 2 para no): "))
+    while n != 1 and n != 2:
+        n = int(input("\nValor no valido ¿Desea añadir otro producto? (Escriba 1 para si y 2 para no): "))    
 
 for i in range(0,len(lstProducto),1):
     lstCanPrecio.append(lstCantidad[i]*lstPrecio[i])

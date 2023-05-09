@@ -8,8 +8,8 @@ matriz = [[random.randint(10,99) for j in range(10)] for i in range(6)]
 for i in matriz:
     print (i)
     
-for i in range (0,len(matriz),1):
-    for k in range (0,len (matriz[i]),1): 
+for i in range (len(matriz)):
+    for k in range (len(matriz[i])): 
         if matriz[i][k] % 2 == 0:
             sumPares += 1
         else:
