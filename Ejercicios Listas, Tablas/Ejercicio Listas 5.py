@@ -1,6 +1,6 @@
 n = 1
 porcentajeDescuento = 0.10
-totalNoImpuestos = 0
+totalNoDescuento = 0
 
 lstProducto = []
 lstCantidad = []
@@ -15,16 +15,16 @@ while n == 1:
     while n != 1 and n != 2:
         n = int(input("\nValor no valido ¿Desea añadir otro producto? (Escriba 1 para si y 2 para no): "))    
 
-for i in range(0,len(lstProducto),1):
+for i in range(len(lstProducto)):
     lstCanPrecio.append(lstCantidad[i]*lstPrecio[i])
-    totalNoImpuestos += lstCanPrecio[i]
+    totalNoDescuento += lstCanPrecio[i]
 
-desuento = porcentajeDescuento * totalNoImpuestos
-totalFinal = totalNoImpuestos - desuento
+desuento = porcentajeDescuento * totalNoDescuento
+totalFinal = totalNoDescuento - desuento
 
 print("\n\nFACTURA")
-for i in range (0,n,1):
+for i in range (len(lstProducto)):
     print ("\n" + str(lstProducto[i]), "      ", lstCantidad[i], "Unidades        $" + str(lstPrecio[i]), "\nSubtotal           $" + str(lstCanPrecio[i]))
 
-print ("\nDescuento del " + str(int((100*porcentajeDescuento))) + "% por renta igual a $" + str(desuento))
-print ("\nTOTAL:    $" + str(totalFinal) + "\n")   
+print ("\nDescuento del " + str(int(100*porcentajeDescuento)) + "% por renta igual a $" + str(desuento))
+print ("\nTOTAL:    $" + str(totalFinal) + "\n")
