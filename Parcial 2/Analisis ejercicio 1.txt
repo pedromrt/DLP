@@ -1,0 +1,54 @@
+Salidas
+
+- marca de la computadora
+- precio original
+- impuestos de compra (IVA y impuesto adicional)
+- descuentos de compra
+- precio final a cancelar
+
+Entradas
+
+- precio original
+- marca de la computadora
+
+Datos adicionales
+
+- IVA es del 13%
+- HP impuesto del 12% y descuento del 20%
+- DELL impuesto del 10% y descuento del 12%
+- SONY impuesto del 13% y descuento del 15%
+- TOSHIBA impuesto del 7% y descuento del 10%
+
+Formulas
+
+iva = IVA / 100 * precioBase
+precioIVA = precioBase + iva
+
+if marca == 1:
+    IMPUESTO = 12
+    DESCUENTO = 20
+    marca = "HP"
+
+elif marca == 2:
+    IMPUESTO = 10
+    DESCUENTO = 10
+    marca = "DELL"
+
+
+elif marca == 3:
+    IMPUESTO = 13
+    DESCUENTO = 15
+    marca = "SONY"
+
+elif marca == 4:
+    IMPUESTO = 7
+    DESCUENTO = 10
+    marca = "TOSHIBA"
+
+impuesto = IMPUESTO / 100 * precioIVA
+descuento = DESCUENTO / 100 * precioIVA
+precioFinal = precioIVA + impuesto - descuento
+
+
+Variables:
+
