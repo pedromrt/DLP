@@ -1046,7 +1046,7 @@ while n != 8:
 
 print("\nGuardando datos...")
 
-# este codigo guarda en el archivo BaseDatos.txt el diccionario donde se almacenan los registros para poder leerlo al volver a ejecutar el codigo
+# Este codigo guarda en el archivo BaseDatos.txt el diccionario donde se almacenan los registros para poder leerlo al volver a ejecutar el codigo
 
 with open("Proyecto Final/BaseDatos.txt", "w") as archivo:
     json.dump(baseDatos, archivo)
