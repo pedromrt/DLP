@@ -14,6 +14,7 @@ baseDatos = {
     "tarea1" : [0],
     "tarea2" : [0],
     "promedio" : [0]
+}
 
 # primero abre el archivo Base de datos
 # despues verifica con un if si la primera linea esta vacia  o no
@@ -21,7 +22,6 @@ baseDatos = {
 # si esta vacia salta este paso y solo ejecuta el diccionario como se muestra en el codigo
 
 
-}
 with open("Proyecto Final/BaseDatos.txt", "r") as archivo:
     if archivo.readline().strip():
         with open("Proyecto Final/BaseDatos.txt","r") as archivo:
