@@ -1,0 +1,1 @@
+{"nombre": [0], "carnet": [0], "grado": [0], "ExamenFinal": [0], "actividad1": [0], "actividad2": [0], "tarea1": [0], "tarea2": [0], "promedio": [0]}

@@ -1,3 +1,12 @@
+
+#nota: agregar exception value error a cada input
+#nota: crear una base de datos de los alumnos con manipulacion de archivos donde al inicio del codigo lea la base de datos y al final la borre y transcriba toda nuevamente antes de cerrar el archivo.
+#para la base de datos leera cada dato linea por linea, donde habra que crear un bucle doble que lea las lineas de 9 en 9 ya que es la cantidad de datos que se toman por alumno
+
+import json
+
+
+
 baseDatos = {
     
     "nombre" : [0],
@@ -11,6 +20,9 @@ baseDatos = {
     "promedio" : [0]
 
 }
+
+with open("BaseDatos.txt", "r") as archivo:
+    baseDatos = json.load(archivo)
 
 EXAMENFINAL = 40
 ACTIVIDAD1 = 20
@@ -333,5 +345,11 @@ while n != 8:
             else:
                 estado = "Reprobado"
             print(baseDatos["nombre"][i], round(baseDatos["promedio"][i],2),estado)
-        
+
+print("\nGuardando datos...")
+
+with open("BaseDatos.txt", "w") as archivo:
+    json.dump(baseDatos, archivo)
+
 print ("\nPrograma Finalizado...\n")
+
