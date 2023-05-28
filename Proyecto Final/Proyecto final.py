@@ -1,7 +1,6 @@
-
-#nota: agregar exception value error a cada input
-
 import json
+
+#Este diccionario almacena todos los datos que se registren basados en su tipo de dato y en su indice
 
 baseDatos = {
     
@@ -16,11 +15,10 @@ baseDatos = {
     "promedio" : [0]
 }
 
-# primero abre el archivo Base de datos
-# despues verifica con un if si la primera linea esta vacia  o no
-# si no esta vacia lee los datos del archivo y los sustituye con los anteriormente guardados
-# si esta vacia salta este paso y solo ejecuta el diccionario como se muestra en el codigo
-
+# Este bloque de codigo abre el archivo BaseDatos.txt 
+# Luego verifica si el documento esta vacio o contiene informacion
+# Si el archivo contiene informacion, este la copia y la guarda dentro del diccionario baseDatos
+# Si el archivo esta vacio, este salta este paso y continua con el codigo 
 
 with open("Proyecto Final/BaseDatos.txt", "r") as archivo:
     if archivo.readline().strip():
@@ -28,12 +26,16 @@ with open("Proyecto Final/BaseDatos.txt", "r") as archivo:
             baseDatos = json.load(archivo)
 
 
+
+# Este bloque de codigo establece el porcentaje al cual equivale cada actividad correspondiente
+
 EXAMENFINAL = 40
 ACTIVIDAD1 = 20
 ACTIVIDAD2 = 20
 TAREA1 = 10
 TAREA2 = 10
 
+# Declaramos n para utilizarla en el bucle while del menu principal
 
 n =  0
 
@@ -51,8 +53,22 @@ while n != 8:
     print ("7. Mostrar toda la lista de alumnos")
     print ("8. Salir del programa")
 
-    n = int(input("\nIngrese el número de la opción que desea seleccionar: "))
-    
+    #Este bloque de codigo verifica que el tipo de entrada sea de tipo entero, esto por si el usuario ingresa un dato tipo string en lugar de un numero
+
+    try:
+        n = int(input("\nIngrese el número de la opción que desea seleccionar: "))
+
+    except ValueError:
+        while True:
+            try:
+                n = int(input("\nTipo de entrada no válida. Ingrese el número de la opción que desea seleccionar: "))
+                break
+            except ValueError:
+                continue
+
+    #Este bloque de codigo verifica que el numero que ingrese el usuario este dentro del rango de opciones que se muestran en el menu
+    #Si el usuario ingresa un numero fuera del rango de opciones, este vuelve a imprimir el menu de opciones y solicita una entrada valida dentro del rango de opciones marcada
+
     while n != 1 and n != 2 and n != 3 and n != 4 and n != 5 and n != 6 and n != 7 and n != 8:
         
         print ('\n\nCENTRO ESCOLAR "LOS MEJORES"')
@@ -65,19 +81,54 @@ while n != 8:
         print ("7. Mostrar toda la lista de alumnos")
         print ("8. Salir del programa")
         
-        n = int(input("\nOpcion no valida, Ingrese el número de la opción que desea seleccionar: "))
+        #Este bloque de codigo verifica que el tipo de entrada sea de tipo entero, esto por si el usuario ingresa un dato tipo string en lugar de un numero
+
+        try:
+            n = int(input("\nOpcion no valida, Ingrese el número de la opción que desea seleccionar: "))
+
+        except ValueError:
+            while True:
+                try:
+                    n = int(input("\nTipo de entrada no válida. Ingrese el número de la opción que desea seleccionar: "))
+                    break
+                except ValueError:
+                    continue
 
     #OPCION 1 AGREGAR ALUMNO
 
     if n == 1:
         
+        #Este bloque de codigo permite añadir un nuevo elemento a las listas de "nombre", "carnet" y "grado"
+        #Ademas crea un valor en cero para las notas y promedio de las actividades a evaluar
+        #Esto para que se registre un elemento en cada lista con el mismo indice que los añadidos en las listas anterior mente mencionadas
+
         print ("\n\n\nAGREGAR ALUMNO")
         baseDatos["nombre"].append(input("\nIngrese el nombre del alumno: "))
         carnet = input("\nIngrese el carnet del alumno: ")
+        
+        # Este bloque de codigo verifica que el carnet ingresado para el nuevo estudiante no exista dentro de la base de datos
+        # Esto para que no se duplique un mismo valor de carnet para 2 estudiantes
+        # Este bloque recorre y compara todos los carnets dentro de la base de datos y si encuentra una coincidencia,
+        # Vuelve a solicitar al usuario que ingrese otro carnet, repitiendo el proceso de verificacion
+
         for i in range (len(baseDatos["carnet"])):
             while baseDatos["carnet"][i] == carnet:
-                carnet = input("\nCarnet duplicado, ingrese el carnet del alumno: ")
+        
+                #Este bloque de codigo verifica que el tipo de entrada sea de tipo entero, esto por si el usuario ingresa un dato tipo string en lugar de un numero
+
+                try:
+                    carnet = int(input("\nCarnet duplicado, ingrese el carnet del alumno: "))
+
+                except ValueError:
+                    while True:
+                        try:
+                            carnet = int(input("\nTipo de entrada no válida. Ingrese un número de carnet valido: "))
+                            break
+                        except ValueError:
+                            continue
+
                 i = 0
+        
         baseDatos["carnet"].append(carnet)
         baseDatos["grado"].append(input("\nIngrese el grado del alumno: "))
         baseDatos["ExamenFinal"].append(0)
@@ -91,8 +142,25 @@ while n != 8:
 
     while n == 2:
         print ("\n\n\nAGREGAR NOTAS DE ALUMNO")
-        carnet = input("\nIngrese el número de carnet del alumno: ")
         
+ 
+        
+        # Este bloque de codigo verifica que el tipo de entrada sea de tipo entero, esto por si el usuario ingresa un dato tipo string en lugar de un numero
+
+        try:
+            carnet = int(input("\nIngrese el número de carnet del alumno: "))
+        except ValueError:
+            while True:
+                try:
+                    carnet = int(input("\nTipo de entrada no válida. Ingrese un número de carnet valido: "))
+                    break
+                except ValueError:
+                    continue        
+        
+        # Este bloque de codigo solicita un la entrada de un numero de carnet, posterior a eso, verifica si el carnet se encuentra en la base de datos
+        # Si el carnet se encuentra, este crea la variable encontrado y le asigna el valor True, ademas de esto, guarda el indice donde se encontro el canet, por ultimo rompe el bucle
+        # Si no se encuentra, unicamente cambia el valor de la variable encontrado a False
+            
         for i in range (len(baseDatos["carnet"])):
             if baseDatos["carnet"][i] == carnet:
                 encontrado = True
@@ -100,32 +168,150 @@ while n != 8:
             else:
                 encontrado = False
 
-        if encontrado == True:        
+        # Si el carnet fue encontrado, este solicita la entada de las notas las cuales se guardan en el mismo indice donde fue encontrado el carnet
+        # Siempe en sus listas correspondientes
+
+
+        if encontrado == True: 
+
+            # TAREA 1
+
+            # Este bloque de codigo verifica que el tipo de entrada sea de tipo float, esto por si el usuario ingresa un dato tipo string en lugar de un numero
+
+            try:
+                tarea1 = int(input("\n\nIngrese la nota de la tarea #1: "))
+            except ValueError:
+                while True:
+                    try:
+                        tarea1 = int(input("\nTipo de entrada no válida. Ingrese la nota de la tarea #1: "))
+                        break
+                    except ValueError:
+                        continue
+
+            # Este bloque de codigo verifica que la nota ingresada este entre los valores de 0 y 10
+            # Si el usuario ingresa un valor fuera del rango establecido vuelve a solicitar el ingreso de la nota, hasta que el valor este dentro del rango
             
-            tarea1 = float(input("\n\nIngrese la nota de la tarea #1: "))
             while tarea1 < 0 or tarea1 > 10:
-                tarea1 = float(input("\nNota no valida, ingrese la nota de la tarea #1: "))
+
+                # Este bloque de codigo verifica que el tipo de entrada sea de tipo float, esto por si el usuario ingresa un dato tipo string en lugar de un numero
+
+                try:
+                    tarea1 = float(input("\nNota no valida, ingrese la nota de la tarea #1: "))
+                except ValueError:
+                    while True:
+                        try:
+                            tarea1 = int(input("\nTipo de entrada no válida. Ingrese la nota de la tarea #1: "))
+                            break
+                        except ValueError:
+                            continue
+
             baseDatos["tarea1"][i] = tarea1
+
+            # TAREA 2
+
+            # Este bloque de codigo verifica que el tipo de entrada sea de tipo float, esto por si el usuario ingresa un dato tipo string en lugar de un numero
+
+            try:
+                tarea2 = int(input("\n\nIngrese la nota de la tarea #2: "))
+            except ValueError:
+                while True:
+                    try:
+                        tarea2 = int(input("\nTipo de entrada no válida. Ingrese la nota de la tarea #2: "))
+                        break
+                    except ValueError:
+                        continue
+
+            # Este bloque de codigo verifica que la nota ingresada este entre los valores de 0 y 10
+            # Si el usuario ingresa un valor fuera del rango establecido vuelve a solicitar el ingreso de la nota, hasta que el valor este dentro del rango
             
-            tarea2 = float(input("\n\nIngrese la nota de la tarea #2: "))
             while tarea2 < 0 or tarea2 > 10:
-                actividad2 = float(input("\nNota no valida, ingrese la nota de la tarea #2: "))
+
+                # Este bloque de codigo verifica que el tipo de entrada sea de tipo float, esto por si el usuario ingresa un dato tipo string en lugar de un numero
+
+                try:
+                    tarea2 = float(input("\nNota no valida, Ingrese la nota de la tarea #2: "))
+                except ValueError:
+                    while True:
+                        try:
+                            tarea2 = int(input("\nTipo de entrada no válida. Ingrese la nota de la tarea #2: "))
+                            break
+                        except ValueError:
+                            continue
+
             baseDatos["tarea2"][i] = tarea2
 
-            actividad1 = float(input("\n\nIngrese la nota de la actividad 1: "))
-            while actividad1 < 0 or actividad1 > 10:
-                actividad1 = float(input("\nNota no valida, ingrese la nota de la actividad 1: "))
-            baseDatos["actividad1"][i] = actividad1
 
-            actividad2 = float(input("\n\nIngrese la nota de la actividad 2: "))
+            # Actividad 1
+
+            # Este bloque de codigo verifica que el tipo de entrada sea de tipo float, esto por si el usuario ingresa un dato tipo string en lugar de un numero
+
+            try:
+                actividad1 = int(input("\n\nIngrese la nota de la actividad #1: "))
+            except ValueError:
+                while True:
+                    try:
+                        actividad1 = int(input("\nTipo de entrada no válida. Ingrese la nota de la actividad #1: "))
+                        break
+                    except ValueError:
+                        continue
+
+            # Este bloque de codigo verifica que la nota ingresada este entre los valores de 0 y 10
+            # Si el usuario ingresa un valor fuera del rango establecido vuelve a solicitar el ingreso de la nota, hasta que el valor este dentro del rango
+            
+            while actividad1 < 0 or actividad1 > 10:
+
+                # Este bloque de codigo verifica que el tipo de entrada sea de tipo float, esto por si el usuario ingresa un dato tipo string en lugar de un numero
+
+                try:
+                    actividad1 = float(input("\nNota no valida, Ingrese la nota de la actividad #1: "))
+                except ValueError:
+                    while True:
+                        try:
+                            actividad1 = int(input("\nTipo de entrada no válida. Ingrese la nota de la actividad #1: "))
+                            break
+                        except ValueError:
+                            continue
+
+            baseDatos["actividad1"][i] = actividad1
+           
+
+            # Actividad 2
+
+            # Este bloque de codigo verifica que el tipo de entrada sea de tipo float, esto por si el usuario ingresa un dato tipo string en lugar de un numero
+
+            try:
+                actividad2 = int(input("\n\nIngrese la nota de la actividad #2: "))
+            except ValueError:
+                while True:
+                    try:
+                        actividad2 = int(input("\nTipo de entrada no válida. Ingrese la nota de la actividad #2: "))
+                        break
+                    except ValueError:
+                        continue
+
+            # Este bloque de codigo verifica que la nota ingresada este entre los valores de 0 y 10
+            # Si el usuario ingresa un valor fuera del rango establecido vuelve a solicitar el ingreso de la nota, hasta que el valor este dentro del rango
+            
             while actividad2 < 0 or actividad2 > 10:
-                actividad2 = float(input("\nNota no valida, ingrese la nota de la actividad 2: "))
+
+                # Este bloque de codigo verifica que el tipo de entrada sea de tipo float, esto por si el usuario ingresa un dato tipo string en lugar de un numero
+
+                try:
+                    actividad2 = float(input("\nNota no valida, Ingrese la nota de la actividad #2: "))
+                except ValueError:
+                    while True:
+                        try:
+                            actividad2 = int(input("\nTipo de entrada no válida. Ingrese la nota de la actividad #2: "))
+                            break
+                        except ValueError:
+                            continue
+
             baseDatos["actividad2"][i] = actividad2
 
-            ExamenFinal = float(input("\n\nIngrese la nota del examen final: "))
-            while ExamenFinal < 0 or ExamenFinal > 10:
-                ExamenFinal = float(input("\nNota no valida, ingrese la nota del examen final: "))
-            baseDatos["ExamenFinal"][i] = ExamenFinal
+
+
+
+
             
             
             baseDatos["promedio"][i] = (baseDatos["ExamenFinal"][i]*(EXAMENFINAL/100) + baseDatos["actividad1"][i]*(ACTIVIDAD1/100) + baseDatos["actividad2"][i]*(ACTIVIDAD2/100) + baseDatos["tarea1"][i]*(TAREA1/100) + baseDatos["tarea2"][i]*(TAREA2/100))
@@ -137,13 +323,38 @@ while n != 8:
             print ("\n\n\nCarnet no encontrado, desea realizar otra busqueda?")
             print ("\n1. Si")
             print ("2. No")
-            again = int(input("\nIngrese el número de la opción que desea seleccionar: "))
+            
+            #Este bloque de codigo verifica que el tipo de entrada sea de tipo entero, esto por si el usuario ingresa un dato tipo string en lugar de un numero
+
+            try:
+                again = int(input("\nIngrese el número de la opción que desea seleccionar: "))
+
+            except ValueError:
+                while True:
+                    try:
+                        again = int(input("\nTipo de entrada no válida. Ingrese el número de la opción que desea seleccionar: "))
+                        break
+                    except ValueError:
+                        continue
+
             while again != 1 and again != 2:
                 print ("\n\n\nDesea realizar otra busqueda?")
                 print ("\n1. Si")
                 print ("2. No")
-                again = int(input("\nOpcion no valida, ingrese el número de la opción que desea seleccionar: "))
-            
+
+                #Este bloque de codigo verifica que el tipo de entrada sea de tipo entero, esto por si el usuario ingresa un dato tipo string en lugar de un numero
+
+                try:
+                    again = int(input("\nOpcion no valida, ingrese el número de la opción que desea seleccionar: "))
+
+                except ValueError:
+                    while True:
+                        try:
+                            again = int(input("\nTipo de entrada no válida. Ingrese el número de la opción que desea seleccionar: "))
+                            break
+                        except ValueError:
+                            continue
+
             if again == 1:
                 n = 2
             else:
@@ -178,9 +389,20 @@ while n != 8:
                     print ("4. Actividad 2")
                     print ("5. Examen Final")
                     print ("6. Volver al menu principal")
+                 
+                    #Este bloque de codigo verifica que el tipo de entrada sea de tipo entero, esto por si el usuario ingresa un dato tipo string en lugar de un numero
 
-                    f = int(input("\nIngrese el número de la opción que desea seleccionar: "))
-                    
+                    try:
+                        f = int(input("\nIngrese el número de la opción que desea seleccionar: "))
+
+                    except ValueError:
+                        while True:
+                            try:
+                                f = int(input("\nTipo de entrada no válida. Ingrese el número de la opción que desea seleccionar: "))
+                                break
+                            except ValueError:
+                                continue
+
                     while f != 1 and f != 2 and f != 3 and f != 4 and f != 5 and f != 6:
                         
                         print ('\n\nSeleccione la nota que desea modificar:"')
@@ -191,8 +413,19 @@ while n != 8:
                         print ("5. Examen Final")
                         print ("6. Volver al menu principal")
                         
-                        f = int(input("\nOpcion no valida, Ingrese el número de la opción que desea seleccionar: "))
-                
+                        #Este bloque de codigo verifica que el tipo de entrada sea de tipo entero, esto por si el usuario ingresa un dato tipo string en lugar de un numero
+
+                        try:
+                            f = int(input("\nOpcion no valida, Ingrese el número de la opción que desea seleccionar: "))
+
+                        except ValueError:
+                            while True:
+                                try:
+                                    f = int(input("\nTipo de entrada no válida. Ingrese el número de la opción que desea seleccionar: "))
+                                    break
+                                except ValueError:
+                                    continue
+
                     if f == 1:
                     
                         tarea1 = float(input("\n\nIngrese la modificacion de la nota de la tarea #1: "))
@@ -206,7 +439,20 @@ while n != 8:
                         print ("\n\n\nNota guardada, desea realizar otra modificacion?")
                         print ("\n1. Si")
                         print ("2. No")
-                        again = int(input("\nIngrese el número de la opción que desea seleccionar: "))
+                                                
+                        #Este bloque de codigo verifica que el tipo de entrada sea de tipo entero, esto por si el usuario ingresa un dato tipo string en lugar de un numero
+
+                        try:
+                            again = int(input("\nIngrese el número de la opción que desea seleccionar: "))
+
+                        except ValueError:
+                            while True:
+                                try:
+                                    again = int(input("\nTipo de entrada no válida. Ingrese el número de la opción que desea seleccionar: "))
+                                    break
+                                except ValueError:
+                                    continue                        
+                        
                         while again != 1 and again != 2:
                             print ("\n\n\nDesea realizar otra modificacion?")
                             print ("\n1. Si")
