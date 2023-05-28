@@ -104,8 +104,20 @@ while n != 8:
 
         print ("\n\n\nAGREGAR ALUMNO")
         baseDatos["nombre"].append(input("\nIngrese el nombre del alumno: "))
-        carnet = input("\nIngrese el carnet del alumno: ")
         
+        #Este bloque de codigo verifica que el tipo de entrada sea de tipo entero, esto por si el usuario ingresa un dato tipo string en lugar de un numero
+
+        try:
+            carnet = int(input("\nIngrese el carnet del alumno: "))
+
+        except ValueError:
+            while True:
+                try:
+                    carnet = int(input("\nTipo de entrada no válida. Ingrese un número de carnet valido: "))
+                    break
+                except ValueError:
+                    continue
+
         # Este bloque de codigo verifica que el carnet ingresado para el nuevo estudiante no exista dentro de la base de datos
         # Esto para que no se duplique un mismo valor de carnet para 2 estudiantes
         # Este bloque recorre y compara todos los carnets dentro de la base de datos y si encuentra una coincidencia,
@@ -309,15 +321,49 @@ while n != 8:
             baseDatos["actividad2"][i] = actividad2
 
 
+            # Examen Final
 
+            # Este bloque de codigo verifica que el tipo de entrada sea de tipo float, esto por si el usuario ingresa un dato tipo string en lugar de un numero
 
+            try:
+                examenFinal = int(input("\n\nIngrese la nota del examen final: "))
+            except ValueError:
+                while True:
+                    try:
+                        examenFinal = int(input("\nTipo de entrada no válida. Ingrese la nota del examen final: "))
+                        break
+                    except ValueError:
+                        continue
 
+            # Este bloque de codigo verifica que la nota ingresada este entre los valores de 0 y 10
+            # Si el usuario ingresa un valor fuera del rango establecido vuelve a solicitar el ingreso de la nota, hasta que el valor este dentro del rango
             
+            while examenFinal < 0 or examenFinal > 10:
+
+                # Este bloque de codigo verifica que el tipo de entrada sea de tipo float, esto por si el usuario ingresa un dato tipo string en lugar de un numero
+
+                try:
+                    examenFinal = float(input("\nNota no valida, Ingrese la nota del examen final: "))
+                except ValueError:
+                    while True:
+                        try:
+                            examenFinal = int(input("\nTipo de entrada no válida. Ingrese la nota del examen final: "))
+                            break
+                        except ValueError:
+                            continue
+
+            baseDatos["ExamenFinal"][i] = examenFinal
             
+            # Este bloque de codigo calcula el promedio del alumno del carnet seleccionado
+
             baseDatos["promedio"][i] = (baseDatos["ExamenFinal"][i]*(EXAMENFINAL/100) + baseDatos["actividad1"][i]*(ACTIVIDAD1/100) + baseDatos["actividad2"][i]*(ACTIVIDAD2/100) + baseDatos["tarea1"][i]*(TAREA1/100) + baseDatos["tarea2"][i]*(TAREA2/100))
 
             n = 0
         
+        # Si el carnet no fue encontrado, el siguiente codigo consulta si desea realizar otra busqueda por carnet
+        # Si el usuario ingresa un 1 = si, el codigo regresa al inicio del while donde vuelve a consultar el carnet a buscar
+        # Si ingresa 2 = no el bucle se rompe y regresa al menu principal
+
         else:
             
             print ("\n\n\nCarnet no encontrado, desea realizar otra busqueda?")
@@ -337,13 +383,16 @@ while n != 8:
                     except ValueError:
                         continue
 
+            #Este bloque de codigo verifica que el numero que ingrese el usuario este dentro del rango de opciones que se muestran en el menu
+            #Si el usuario ingresa un numero fuera del rango de opciones, este vuelve a imprimir el menu de opciones y solicita una entrada valida dentro del rango de opciones marcada
+
             while again != 1 and again != 2:
                 print ("\n\n\nDesea realizar otra busqueda?")
                 print ("\n1. Si")
                 print ("2. No")
 
                 #Este bloque de codigo verifica que el tipo de entrada sea de tipo entero, esto por si el usuario ingresa un dato tipo string en lugar de un numero
-
+                
                 try:
                     again = int(input("\nOpcion no valida, ingrese el número de la opción que desea seleccionar: "))
 
@@ -360,13 +409,26 @@ while n != 8:
             else:
                 n = 0
 
+    
     #OPCION 3 MODIFICAR NOTAS DE ALUMNO
 
     while n == 3:
 
         print ("\n\n\nMODIFICAR NOTAS DE ALUMNO")
-        carnet = input("\nIngrese el número de carnet del alumno: ")
         
+
+        # Este bloque de codigo verifica que el tipo de entrada sea de tipo entero, esto por si el usuario ingresa un dato tipo string en lugar de un numero
+
+        try:
+            carnet = int(input("\nIngrese el número de carnet del alumno: "))
+        except ValueError:
+            while True:
+                try:
+                    carnet = int(input("\nTipo de entrada no válida. Ingrese un número de carnet valido: "))
+                    break
+                except ValueError:
+                    continue
+    
         for i in range (len(baseDatos["carnet"])):
             if baseDatos["carnet"][i] == carnet:
                 encontrado = True
@@ -599,7 +661,19 @@ while n != 8:
     while n == 4:
         
         print ("\n\n\nELIMINAR ALUMNO")
-        carnet = input("\nIngrese el número de carnet del alumno: ")
+
+        # Este bloque de codigo verifica que el tipo de entrada sea de tipo entero, esto por si el usuario ingresa un dato tipo string en lugar de un numero
+
+        try:
+            carnet = int(input("\nIngrese el número de carnet del alumno: "))
+        except ValueError:
+            while True:
+                try:
+                    carnet = int(input("\nTipo de entrada no válida. Ingrese un número de carnet valido: "))
+                    break
+                except ValueError:
+                    continue        
+
         
         for i in range (len(baseDatos["carnet"])):
             if baseDatos["carnet"][i] == carnet:
