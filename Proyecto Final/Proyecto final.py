@@ -1,6 +1,5 @@
 
 #nota: agregar exception value error a cada input
-#nota: agregar un exception en caso de no haber ingresado las notas
 
 import json
 
