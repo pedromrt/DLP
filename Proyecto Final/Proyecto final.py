@@ -968,7 +968,8 @@ while n != 8:
                     break
                 except ValueError:
                     continue        
- 
+
+
         # Este bloque de codigo solicita un la entrada de un numero de carnet, posterior a eso, verifica si el carnet se encuentra en la base de datos
         # Si el carnet se encuentra, este crea la variable encontrado y le asigna el valor True, ademas de esto, guarda el indice donde se encontro el canet, por ultimo rompe el bucle
         # Si no se encuentra, unicamente cambia el valor de la variable encontrado a False       
@@ -983,7 +984,10 @@ while n != 8:
 
         # Si el carnet fue encontrado elimina todos los elementos ubicados en el indice "i" de todas las listas dentro del diccionario baseDatos
 
-        if encontrado == True:        
+        if encontrado == True:    
+
+            print("\n\nEl estudiante con el carnet 0" + str(carnet) + " ha sido eliminado")  
+    
             baseDatos["nombre"].pop(indice)
             baseDatos["carnet"].pop(indice)
             baseDatos["grado"].pop(indice)
@@ -993,7 +997,7 @@ while n != 8:
             baseDatos["tarea1"].pop(indice)
             baseDatos["tarea2"].pop(indice)
             baseDatos["promedio"].pop(indice)
-            
+
             n = 0
 
         # Si el carnet no fue encontrado, el siguiente codigo consulta si desea realizar otra busqueda por carnet
@@ -1063,7 +1067,7 @@ while n != 8:
 
     if n == 6:
 
-        print ("\n\n\nLISTA DE APROBADOS\n")
+        print ("\n\n\nLISTA DE REPROBADOS\n")
 
         # Este bloque de codigo recorre e imprime todos los elementos de la lista "promedio" y verifica que cada uno sea menor a 7
         # Si esto se cumple este imprimira el nombre junto al promedio en el indice "i" el cual hace referencia al elemento evaluado en promedio
