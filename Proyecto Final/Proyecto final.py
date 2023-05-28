@@ -79,7 +79,7 @@ while n != 8:
                 carnet = input("\nCarnet duplicado, ingrese el carnet del alumno: ")
                 i = 0
         baseDatos["carnet"].append(carnet)
-        baseDatos["grado"].append(int(input("\nIngrese el grado del alumno: ")))
+        baseDatos["grado"].append(input("\nIngrese el grado del alumno: "))
         baseDatos["ExamenFinal"].append(0)
         baseDatos["actividad1"].append(0)
         baseDatos["actividad2"].append(0)
