@@ -3,14 +3,22 @@ baseDatos = {
     "nombre" : [0],
     "carnet" : [0],
     "grado" : [0],
-    "nota1" : [0],
-    "nota2" : [0],
-    "nota3" : [0],
+    "ExamenFinal" : [0],
+    "actividad1" : [0],
+    "actividad2" : [0],
+    "tarea1" : [0],
+    "tarea2" : [0],
     "promedio" : [0]
 
 }
 
-notasCant = 3
+EXAMENFINAL = 40
+ACTIVIDAD1 = 20
+ACTIVIDAD2 = 20
+TAREA1 = 10
+TAREA2 = 10
+
+
 n =  0
 
 #MAIN MENU
@@ -56,9 +64,11 @@ while n != 8:
                 i = 0
         baseDatos["carnet"].append(carnet)
         baseDatos["grado"].append(int(input("\nIngrese el grado del alumno: ")))
-        baseDatos["nota1"].append(None)
-        baseDatos["nota2"].append(None)
-        baseDatos["nota3"].append(None)
+        baseDatos["ExamenFinal"].append(None)
+        baseDatos["actividad1"].append(None)
+        baseDatos["actividad2"].append(None)
+        baseDatos["tarea1"].append(None)
+        baseDatos["tarea2"].append(None)
         baseDatos["promedio"].append(None) 
 
     #OPCION 2 AGREGAR NOTAS DE ALUMNO
@@ -76,22 +86,33 @@ while n != 8:
 
         if encontrado == True:        
             
-            nota1 = float(input("\n\nIngrese la nota de la primera evaluacion: "))
-            while nota1 < 0 or nota1 > 10:
-                nota1 = float(input("\nNota no valida, ingrese la nota de la primera evaluacion: "))
-            baseDatos["nota1"][i] = nota1
+            tarea1 = float(input("\n\nIngrese la nota de la tarea #1: "))
+            while tarea1 < 0 or tarea1 > 10:
+                tarea1 = float(input("\nNota no valida, ingrese la nota de la tarea #1: "))
+            baseDatos["tarea1"][i] = tarea1
             
-            nota2 = float(input("\n\nIngrese la nota de la segunda evaluacion: "))
-            while nota2 < 0 or nota2 > 10:
-                nota2 = float(input("\nNota no valida, ingrese la nota de la segunda evaluacion: "))
-            baseDatos["nota2"][i] = nota2
+            tarea2 = float(input("\n\nIngrese la nota de la tarea #2: "))
+            while tarea2 < 0 or tarea2 > 10:
+                actividad2 = float(input("\nNota no valida, ingrese la nota de la tarea #2: "))
+            baseDatos["tare2"][i] = tarea2
 
-            nota3 = float(input("\n\nIngrese la nota de la tercera evaluacion: "))
-            while nota3 < 0 or nota3 > 10:
-                nota3 = float(input("\nNota no valida, ingrese la nota de la tercera evaluacion: "))
-            baseDatos["nota3"][i] = nota3
+            actividad1 = float(input("\n\nIngrese la nota de la actividad 1: "))
+            while actividad1 < 0 or actividad1 > 10:
+                actividad1 = float(input("\nNota no valida, ingrese la nota de la actividad 1: "))
+            baseDatos["actividad1"][i] = actividad1
+
+            actividad2 = float(input("\n\nIngrese la nota de la actividad 2: "))
+            while actividad2 < 0 or actividad2 > 10:
+                actividad2 = float(input("\nNota no valida, ingrese la nota de la actividad 2: "))
+            baseDatos["actividad2"][i] = actividad2
+
+            ExamenFinal = float(input("\n\nIngrese la nota del examen final: "))
+            while ExamenFinal < 0 or ExamenFinal > 10:
+                ExamenFinal = float(input("\nNota no valida, ingrese la nota del examen final: "))
+            baseDatos["ExamenFinal"][i] = ExamenFinal
             
-            baseDatos["promedio"][i] = (baseDatos["nota1"][i] + baseDatos["nota2"][i] + baseDatos["nota3"][i]) / notasCant 
+            
+            baseDatos["promedio"][i] = (baseDatos["ExamenFinal"][i]*(EXAMENFINAL/100) + baseDatos["actividad1"][i]*(ACTIVIDAD1/100) + baseDatos["actividad2"][i]*(ACTIVIDAD2/100) + baseDatos["tarea1"][i]*(TAREA1/100) + baseDatos["tarea2"][i]*(TAREA2/100))
 
             n = 0
         
@@ -127,26 +148,91 @@ while n != 8:
                 encontrado = False
 
         if encontrado == True:        
-            
-            nota1 = float(input("\n\nIngrese la correccion de la primera evaluacion: "))
-            while nota1 < 0 or nota1 > 10:
-                nota1 = float(input("\nNota no valida, ingrese la correccion de la primera evaluacion: "))
-            baseDatos["nota1"][i] = nota1
-            
-            nota2 = float(input("\n\nIngrese la correccion de la segunda evaluacion: "))
-            while nota2 < 0 or nota2 > 10:
-                nota2 = float(input("\nNota no valida, ingrese la correccion de la segunda evaluacion: "))
-            baseDatos["nota2"][i] = nota2
+            while x == 1:
+                
+                #agregar un seleccionador para ingresar que nota desea cambiar#
 
-            nota3 = float(input("\n\nIngrese la correccion de la tercera evaluacion: "))
-            while nota3 < 0 or nota3 > 10:
-                nota3 = float(input("\nNota no valida, ingrese la correccion de la tercera evaluacion: "))
-            baseDatos["nota3"][i] = nota3
+                while f != 8:
+    
+                    print ('\n\nSeleccione la nota que desea modificar:"')
+                    print ("\n1. Tarea 1")
+                    print ("2. Tarea 2")
+                    print ("3. Actividad 1")
+                    print ("4. Actividad 2")
+                    print ("5. Examen Final")
+                    print ("6. Volver al menu principal")
+
+                    f = int(input("\nIngrese el número de la opción que desea seleccionar: "))
+                    
+                    while f != 1 and f != 2 and f != 3 and f != 4 and f != 5 and f != 6:
+                        
+                        print ('\n\nSeleccione la nota que desea modificar:"')
+                        print ("\n1. Tarea 1")
+                        print ("2. Tarea 2")
+                        print ("3. Actividad 1")
+                        print ("4. Actividad 2")
+                        print ("5. Examen Final")
+                        print ("6. Volver al menu principal")
+                        
+                        f = int(input("\nOpcion no valida, Ingrese el número de la opción que desea seleccionar: "))
+                
+                if f == 1:
+                
+                    tarea1 = float(input("\n\nIngrese la modificacion de la nota de la tarea #1: "))
+                    while tarea1 < 0 or tarea1 > 10:
+                        tarea1 = float(input("\nNota no valida, ingrese la modificacion de la nota de la tarea #1: "))
+                    baseDatos["tarea1"][i] = tarea1
+
+                elif f == 2:
+
+                    tarea2 = float(input("\n\nIngrese la nota de la tarea #2: "))
+                    while tarea2 < 0 or tarea2 > 10:
+                        actividad2 = float(input("\nNota no valida, ingrese la nota de la tarea #2: "))
+                    baseDatos["tare2"][i] = tarea2
+                    
+                elif f == 3:
+
+                    actividad1 = float(input("\n\nIngrese la nota de la actividad 1: "))
+                    while actividad1 < 0 or actividad1 > 10:
+                        actividad1 = float(input("\nNota no valida, ingrese la nota de la actividad 1: "))
+                    baseDatos["actividad1"][i] = actividad1
+
+                elif f == 4:
+                    
+                    actividad2 = float(input("\n\nIngrese la nota de la actividad 2: "))
+                    while actividad2 < 0 or actividad2 > 10:
+                        actividad2 = float(input("\nNota no valida, ingrese la nota de la actividad 2: "))
+                    baseDatos["actividad2"][i] = actividad2
+
+                elif f == 5:
+
+                    ExamenFinal = float(input("\n\nIngrese la nota del examen final: "))
+                    while ExamenFinal < 0 or ExamenFinal > 10:
+                        ExamenFinal = float(input("\nNota no valida, ingrese la nota del examen final: "))
+                    baseDatos["ExamenFinal"][i] = ExamenFinal
+
+                elif f == 6: 
+                    
+                    n = 0
+                    break
+
+                baseDatos["promedio"][i] = (baseDatos["ExamenFinal"][i]*(EXAMENFINAL/100) + baseDatos["actividad1"][i]*(ACTIVIDAD1/100) + baseDatos["actividad2"][i]*(ACTIVIDAD2/100) + baseDatos["tarea1"][i]*(TAREA1/100) + baseDatos["tarea2"][i]*(TAREA2/100))
             
-            for e in range (1,len(baseDatos["promedio"]),1):
-                baseDatos["promedio"][e] = (baseDatos["nota1"][i] + baseDatos["nota2"][i] + baseDatos["nota3"][i]) / notasCant
-            
-            n = 0
+                print ("\n\n\nNota guardada, desea realizar otra modificacion?")
+                print ("\n1. Si")
+                print ("2. No")
+                again = int(input("\nIngrese el número de la opción que desea seleccionar: "))
+                while again != 1 and again != 2:
+                    print ("\n\n\nDesea realizar otra modificacion?")
+                    print ("\n1. Si")
+                    print ("2. No")
+                    again = int(input("\nOpcion no valida, ingrese el número de la opción que desea seleccionar: "))
+                
+                if again == 1:
+                    x = 1
+                else:
+                    x = 2
+                    n = 0
         
         else:
             
@@ -184,9 +270,11 @@ while n != 8:
             baseDatos["nombre"].pop(indice)
             baseDatos["carnet"].pop(indice)
             baseDatos["grado"].pop(indice)
-            baseDatos["nota1"].pop(indice)
-            baseDatos["nota2"].pop(indice)
-            baseDatos["nota3"].pop(indice)
+            baseDatos["ExamenFinal"].pop(indice)
+            baseDatos["actividad1"].pop(indice)
+            baseDatos["actividad2"].pop(indice)
+            baseDatos["tarea1"].pop(indice)
+            baseDatos["tarea2"].pop(indice)
             baseDatos["promedio"].pop(indice)
             
             n = 0
@@ -216,7 +304,7 @@ while n != 8:
 
         for i in range (len(baseDatos["promedio"])):
             if baseDatos["promedio"][i] >= 7:
-                print(baseDatos["nombre"][i], round(baseDatos["promedio"][i]),2)
+                print(baseDatos["nombre"][i], round(baseDatos["promedio"][i],2))
                 
     #OPCION 6 MOSTRA LISTA DE REPROVADOS
 
@@ -238,7 +326,10 @@ while n != 8:
         for i in range (len(baseDatos["promedio"])):
             if baseDatos["nombre"][i] == 0:
                 continue
-            print(baseDatos["nombre"][i], round(baseDatos["promedio"][i],2))
+            if baseDatos["promedio"][i] >= 7:
+                estado = "Aprovado"
+            else:
+                estado = "Reprobado"
+            print(baseDatos["nombre"][i], round(baseDatos["promedio"][i],2),estado)
         
-
 print ("\nPrograma Finalizado...\n")
