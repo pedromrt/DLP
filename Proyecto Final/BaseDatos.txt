@@ -1,1 +1,0 @@
-{"nombre": [0, "pedro"], "carnet": [0, "01"], "grado": [0, 1], "ExamenFinal": [0, 10.0], "actividad1": [0, 10.0], "actividad2": [0, 10.0], "tarea1": [0, 10.0], "tarea2": [0, 10.0], "promedio": [0, 10.0]}
