@@ -94,7 +94,7 @@ while n != 8:
             tarea2 = float(input("\n\nIngrese la nota de la tarea #2: "))
             while tarea2 < 0 or tarea2 > 10:
                 actividad2 = float(input("\nNota no valida, ingrese la nota de la tarea #2: "))
-            baseDatos["tare2"][i] = tarea2
+            baseDatos["tarea2"][i] = tarea2
 
             actividad1 = float(input("\n\nIngrese la nota de la actividad 1: "))
             while actividad1 < 0 or actividad1 > 10:
@@ -148,11 +148,12 @@ while n != 8:
                 encontrado = False
 
         if encontrado == True:        
+            x = 1
             while x == 1:
                 
-                #agregar un seleccionador para ingresar que nota desea cambiar#
-
-                while f != 8:
+                #agregar un seleccionador para ingresar que nota desea cambiar
+                f = 0
+                while f != 6:
     
                     print ('\n\nSeleccione la nota que desea modificar:"')
                     print ("\n1. Tarea 1")
@@ -176,63 +177,64 @@ while n != 8:
                         
                         f = int(input("\nOpcion no valida, Ingrese el número de la opción que desea seleccionar: "))
                 
-                if f == 1:
+                    if f == 1:
+                    
+                        tarea1 = float(input("\n\nIngrese la modificacion de la nota de la tarea #1: "))
+                        while tarea1 < 0 or tarea1 > 10:
+                            tarea1 = float(input("\nNota no valida, ingrese la modificacion de la nota de la tarea #1: "))
+                        baseDatos["tarea1"][i] = tarea1
+
+                    elif f == 2:
+
+                        tarea2 = float(input("\n\nIngrese la modificacion de la nota de la tarea #2: "))
+                        while tarea2 < 0 or tarea2 > 10:
+                            actividad2 = float(input("\nNota no valida, ingrese la modificacion de la nota de la tarea #2: "))
+                        baseDatos["tarea2"][i] = tarea2
+                        
+                    elif f == 3:
+
+                        actividad1 = float(input("\n\nIngrese la modificacion de la nota de la actividad 1: "))
+                        while actividad1 < 0 or actividad1 > 10:
+                            actividad1 = float(input("\nNota no valida, ingrese la modificacion de la nota de la actividad 1: "))
+                        baseDatos["actividad1"][i] = actividad1
+
+                    elif f == 4:
+                        
+                        actividad2 = float(input("\n\nIngrese la modificacion de la nota de la actividad 2: "))
+                        while actividad2 < 0 or actividad2 > 10:
+                            actividad2 = float(input("\nNota no valida, ingrese la modificacion de la nota de la actividad 2: "))
+                        baseDatos["actividad2"][i] = actividad2
+
+                    elif f == 5:
+
+                        ExamenFinal = float(input("\n\nIngrese la modificacion de la nota del examen final: "))
+                        while ExamenFinal < 0 or ExamenFinal > 10:
+                            ExamenFinal = float(input("\nNota no valida, ingrese la modificacion de la nota del examen final: "))
+                        baseDatos["ExamenFinal"][i] = ExamenFinal
+
+                    elif f == 6: 
+                        
+                        n = 0
+                        break
+
+                    baseDatos["promedio"][i] = (baseDatos["ExamenFinal"][i]*(EXAMENFINAL/100) + baseDatos["actividad1"][i]*(ACTIVIDAD1/100) + baseDatos["actividad2"][i]*(ACTIVIDAD2/100) + baseDatos["tarea1"][i]*(TAREA1/100) + baseDatos["tarea2"][i]*(TAREA2/100))
                 
-                    tarea1 = float(input("\n\nIngrese la modificacion de la nota de la tarea #1: "))
-                    while tarea1 < 0 or tarea1 > 10:
-                        tarea1 = float(input("\nNota no valida, ingrese la modificacion de la nota de la tarea #1: "))
-                    baseDatos["tarea1"][i] = tarea1
-
-                elif f == 2:
-
-                    tarea2 = float(input("\n\nIngrese la nota de la tarea #2: "))
-                    while tarea2 < 0 or tarea2 > 10:
-                        actividad2 = float(input("\nNota no valida, ingrese la nota de la tarea #2: "))
-                    baseDatos["tare2"][i] = tarea2
-                    
-                elif f == 3:
-
-                    actividad1 = float(input("\n\nIngrese la nota de la actividad 1: "))
-                    while actividad1 < 0 or actividad1 > 10:
-                        actividad1 = float(input("\nNota no valida, ingrese la nota de la actividad 1: "))
-                    baseDatos["actividad1"][i] = actividad1
-
-                elif f == 4:
-                    
-                    actividad2 = float(input("\n\nIngrese la nota de la actividad 2: "))
-                    while actividad2 < 0 or actividad2 > 10:
-                        actividad2 = float(input("\nNota no valida, ingrese la nota de la actividad 2: "))
-                    baseDatos["actividad2"][i] = actividad2
-
-                elif f == 5:
-
-                    ExamenFinal = float(input("\n\nIngrese la nota del examen final: "))
-                    while ExamenFinal < 0 or ExamenFinal > 10:
-                        ExamenFinal = float(input("\nNota no valida, ingrese la nota del examen final: "))
-                    baseDatos["ExamenFinal"][i] = ExamenFinal
-
-                elif f == 6: 
-                    
-                    n = 0
-                    break
-
-                baseDatos["promedio"][i] = (baseDatos["ExamenFinal"][i]*(EXAMENFINAL/100) + baseDatos["actividad1"][i]*(ACTIVIDAD1/100) + baseDatos["actividad2"][i]*(ACTIVIDAD2/100) + baseDatos["tarea1"][i]*(TAREA1/100) + baseDatos["tarea2"][i]*(TAREA2/100))
-            
-                print ("\n\n\nNota guardada, desea realizar otra modificacion?")
-                print ("\n1. Si")
-                print ("2. No")
-                again = int(input("\nIngrese el número de la opción que desea seleccionar: "))
-                while again != 1 and again != 2:
-                    print ("\n\n\nDesea realizar otra modificacion?")
+                    print ("\n\n\nNota guardada, desea realizar otra modificacion?")
                     print ("\n1. Si")
                     print ("2. No")
-                    again = int(input("\nOpcion no valida, ingrese el número de la opción que desea seleccionar: "))
-                
-                if again == 1:
-                    x = 1
-                else:
-                    x = 2
-                    n = 0
+                    again = int(input("\nIngrese el número de la opción que desea seleccionar: "))
+                    while again != 1 and again != 2:
+                        print ("\n\n\nDesea realizar otra modificacion?")
+                        print ("\n1. Si")
+                        print ("2. No")
+                        again = int(input("\nOpcion no valida, ingrese el número de la opción que desea seleccionar: "))
+                    
+                    if again == 1:
+                        x = 1
+                    else:
+                        x = 2
+                        n = 0
+                        break
         
         else:
             
