@@ -37,7 +37,7 @@ TAREA2 = 10
 
 # Declaramos n para utilizarla en el bucle while del menu principal
 
-n =  0
+n = 0
 
 #MAIN MENU
 
@@ -69,7 +69,7 @@ while n != 8:
     #Este bloque de codigo verifica que el numero que ingrese el usuario este dentro del rango de opciones que se muestran en el menu
     #Si el usuario ingresa un numero fuera del rango de opciones, este vuelve a imprimir el menu de opciones y solicita una entrada valida dentro del rango de opciones marcada
 
-    while n != 1 and n != 2 and n != 3 and n != 4 and n != 5 and n != 6 and n != 7 and n != 8:
+    while n < 1 or n > 8:
         
         print ('\n\nCENTRO ESCOLAR "LOS MEJORES"')
         print ("\n1. Agregar alumno")
@@ -100,7 +100,7 @@ while n != 8:
         
         #Este bloque de codigo permite añadir un nuevo elemento a las listas de "nombre", "carnet" y "grado"
         #Ademas crea un valor en cero para las notas y promedio de las actividades a evaluar
-        #Esto para que se registre un elemento en cada lista con el mismo indice que los añadidos en las listas anterior mente mencionadas
+        #Esto para que se registre un elemento en cada lista con el mismo indice que los añadidos en las listas anteriormente mencionadas
 
         print ("\n\n\nAGREGAR ALUMNO")
         baseDatos["nombre"].append(input("\nIngrese el nombre del alumno: "))
@@ -386,7 +386,7 @@ while n != 8:
             #Este bloque de codigo verifica que el numero que ingrese el usuario este dentro del rango de opciones que se muestran en el menu
             #Si el usuario ingresa un numero fuera del rango de opciones, este vuelve a imprimir el menu de opciones y solicita una entrada valida dentro del rango de opciones marcada
 
-            while again != 1 and again != 2:
+            while again < 1 or again > 2:
                 print ("\n\n\nDesea realizar otra busqueda?")
                 print ("\n1. Si")
                 print ("2. No")
