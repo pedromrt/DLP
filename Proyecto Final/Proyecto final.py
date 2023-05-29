@@ -1112,6 +1112,4 @@ print("\nGuardando datos...")
 with open("Proyecto Final/BaseDatos.txt", "w") as archivo:
     json.dump(baseDatos, archivo)
 
-
-
 print ("\nPrograma Finalizado...\n")
