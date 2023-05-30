@@ -1,5 +1,7 @@
 import json
 
+rutaBaseDatos = "Proyecto Final/BaseDatos.txt"
+
 #Este diccionario almacena todos los datos que se registren basados en su tipo de dato y en su indice
 
 baseDatos = {
@@ -20,9 +22,9 @@ baseDatos = {
 # Si el archivo contiene informacion, este la copia y la guarda dentro del diccionario baseDatos
 # Si el archivo esta vacio, este salta este paso y continua con el codigo 
 
-with open("Proyecto Final/BaseDatos.txt", "r") as archivo:
+with open(rutaBaseDatos, "r") as archivo:
     if archivo.readline().strip():
-        with open("Proyecto Final/BaseDatos.txt","r") as archivo:
+        with open(rutaBaseDatos,"r") as archivo:
             baseDatos = json.load(archivo)
 
 
@@ -1109,7 +1111,7 @@ print("\nGuardando datos...")
 
 # Este codigo guarda en el archivo BaseDatos.txt el diccionario donde se almacenan los registros para poder leerlo al volver a ejecutar el codigo
 
-with open("Proyecto Final/BaseDatos.txt", "w") as archivo:
+with open(rutaBaseDatos, "w") as archivo:
     json.dump(baseDatos, archivo)
 
 print ("\nPrograma Finalizado...\n")
