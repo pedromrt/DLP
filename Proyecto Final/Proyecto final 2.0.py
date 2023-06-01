@@ -146,7 +146,7 @@ while n != 8:
 
         writeBD()
 
-        n = new_search(print_yes_no("\n\n\nEstudiante archivado, desea realizar otro registro?"), 1)
+        n = new_search(print_yes_no("\n\nEstudiante archivado, desea realizar otro registro?"), 1)
 
     while n == 2:
 
@@ -170,10 +170,10 @@ while n != 8:
         
             writeBD()
 
-            n = new_search(print_yes_no("\n\n\nNotas guardadas, desea realizar otro registro?"), 2)
+            n = new_search(print_yes_no("\n\nNotas guardadas, desea realizar otro registro?"), 2)
         
         else:
-            n = new_search(print_yes_no("\n\n\nEl carnet no existe, desea realizar otra busqueda?"), 2)
+            n = new_search(print_yes_no("\n\nEl carnet no existe, desea realizar otra busqueda?"), 2)
 
     while n == 3:
         print ("\n\n3. MODIFICAR NOTAS DE ALUMNO")
@@ -222,10 +222,10 @@ while n != 8:
                 
                 writeBD()
 
-            n = new_search(print_yes_no("\n\n\nNotas guardadas, desea realizar modificar las notas de otro alumno?"), 3)
+            n = new_search(print_yes_no("\n\nNotas guardadas, desea realizar modificar las notas de otro alumno?"), 3)
         else:
             
-            n = new_search(print_yes_no("\n\n\nEl carnet no existe, desea realizar otra busqueda?"), 3) 
+            n = new_search(print_yes_no("\n\nEl carnet no existe, desea realizar otra busqueda?"), 3) 
 
     while n == 4:
         print ("\n\n4. ELIMINAR ALUMNO")
@@ -234,27 +234,36 @@ while n != 8:
 
         if encontrado == True:
             
-            print("\n\nEl estudiante con el carnet 0" + str(data_base["carnets"][indice]) + " ha sido eliminado")  
-    
-            data_base["nombres"].pop(indice)
-            data_base["carnets"].pop(indice)
-            data_base["grados"].pop(indice)
-            data_base["notas_examen_final"].pop(indice)
-            data_base["notas_actividad_1"].pop(indice)
-            data_base["notas_actividad_2"].pop(indice)
-            data_base["notas_tarea_1"].pop(indice)
-            data_base["notas_tarea_2"].pop(indice)
-            data_base["notas_promedios"].pop(indice)
+            print_yes_no("\n\nSeguro que desea eliminar al estudiante con el carnet 0" + str(data_base["carnets"][indice]) + " ?")
+            f = value_int_input("\nIngrese el número de la opción que desea seleccionar: ","\nTipo de entrada no válida, ingrese el número de la opción que desea seleccionar: ")
+            f = range_options(f, 1, 2, "\nOpcion no valida, Ingrese el número de la opción que desea seleccionar: ", "\nTipo de entrada no válida. Ingrese el número de la opción que desea seleccionar: ")
+                
+            if f == 2:
+                n = new_search(print_yes_no("\n\nDesea eliminar otro alumno?"), 4)
+                   
+            else:
 
-            writeBD()
+                print("\n\nEl estudiante con el carnet 0" + str(data_base["carnets"][indice]) + " ha sido eliminado")  
             
-            n = new_search(print_yes_no("\n\n\nDesea eliminar otro alumno?"), 4)
+                data_base["nombres"].pop(indice)
+                data_base["carnets"].pop(indice)
+                data_base["grados"].pop(indice)
+                data_base["notas_examen_final"].pop(indice)
+                data_base["notas_actividad_1"].pop(indice)
+                data_base["notas_actividad_2"].pop(indice)
+                data_base["notas_tarea_1"].pop(indice)
+                data_base["notas_tarea_2"].pop(indice)
+                data_base["notas_promedios"].pop(indice)
 
+                writeBD()
+                
+                n = new_search(print_yes_no("\n\nDesea eliminar otro alumno?"), 4)
+                
         else:
-            n = new_search(print_yes_no("\n\n\nEl carnet no existe, desea realizar otra busqueda?"), 4)
+            n = new_search(print_yes_no("\n\nEl carnet no existe, desea realizar otra busqueda?"), 4)
 
     if n == 5:
-        print ("\n\n\nLISTA DE APROBADOS\n")
+        print ("\n\nLISTA DE APROBADOS\n")
         
         for i in range (len(data_base["notas_promedios"])):
             if data_base["nombres"][i] == 0:
@@ -263,7 +272,7 @@ while n != 8:
                 print(data_base["nombres"][i], round(data_base["notas_promedios"][i],2))
 
     if n == 6:
-        print ("\n\n\nLISTA DE REPROBADOS\n")
+        print ("\n\nLISTA DE REPROBADOS\n")
         
         for i in range (len(data_base["notas_promedios"])):
             if data_base["nombres"][i] == 0:
@@ -272,7 +281,7 @@ while n != 8:
                 print(data_base["nombres"][i], round(data_base["notas_promedios"][i],2))
 
     if n == 7:
-        print ("\n\n\nLISTA DE NOTAS\n")
+        print ("\n\nLISTA DE NOTAS\n")
         
         for i in range (len(data_base["notas_promedios"])):
             if data_base["nombres"][i] == 0:
