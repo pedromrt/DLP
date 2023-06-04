@@ -43,7 +43,10 @@ def no_numbers_in_str(entrada):
 
 def no_special_character(entrada, caracteres_permitidos=None):
     entrada = str(entrada)
-    patron = r'^[a-zA-Z0-9{}]+$'.format(re.escape(caracteres_permitidos))
+    if caracteres_permitidos is None:
+        patron = r'^[a-zA-Z0-9]+$'
+    else:
+        patron = r'^[a-zA-Z0-9{}]+$'.format(re.escape(caracteres_permitidos))
     if re.match(patron, entrada):
         return entrada, True
     else:
@@ -316,10 +319,32 @@ def entrada_str_limite_no_numbers(mensaje,limite_bot,limite_top):
 
 while True:
 
-    #print("\n",entrada_int_simple("\nEntrada int simple: "))
+    #int
 
-    #print("\n",entrada_int_rango("\nEntrada int rango: ", 1, 5))
+    print("\n",entrada_int_simple("\nEntrada int simple: "))
 
-    #print("\n",entrada_int_limite("\nEntrada int limite: ", 1, 6))
+    print("\n",entrada_int_rango("\nEntrada int rango: ", 1, 5))
+
+    print("\n",entrada_int_limite("\nEntrada int limite: ", 1, 6))
 
     print("\n",entrada_int_rango_limite("\nEntrada int rango limite: ", 1, 5000, 2, 3))
+
+    #float
+    
+    print("\n",entrada_float_simple("\nEntrada int simple: "))
+
+    print("\n",entrada_float_rango("\nEntrada int rango: ", 1, 5))
+
+    print("\n",entrada_float_limite("\nEntrada int limite: ", 1, 6))
+
+    print("\n",entrada_float_rango_limite("\nEntrada int rango limite: ", 1, 5000, 2, 3))
+
+    #str
+
+    print("\n",entrada_str_simple("\nEntrada str simple: "))
+
+    print("\n",entrada_str_limite("\nEntrada str limite: ", 1, 6))
+
+    print("\n",entrada_str_no_numbers("\nEntrada str no numbers: "))
+
+    print("\n",entrada_str_limite_no_numbers("\nEntrada str limite no numbers: ", 1, 6))
