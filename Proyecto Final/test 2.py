@@ -92,7 +92,7 @@ def entrada_int_rango(mensaje,lower,bigger):
         
         return entrada    
 
-def entrada_int_limite(mensaje,limite_top,limite_bot):
+def entrada_int_limite(mensaje,limite_bot,limite_top):
     while True:
         entrada = input(mensaje)
         
@@ -113,7 +113,7 @@ def entrada_int_limite(mensaje,limite_top,limite_bot):
         
         return entrada
 
-def entrada_int_rango_limite(mensaje,lower,bigger,limite_top,limite_bot):
+def entrada_int_rango_limite(mensaje,lower,bigger,limite_bot,limite_top):
     while True:
         entrada = input(mensaje)
         
@@ -133,7 +133,7 @@ def entrada_int_rango_limite(mensaje,lower,bigger,limite_top,limite_bot):
             continue    
         
         entrada, check4 = input_limitado(entrada, limite_top, limite_bot)
-        if check3 == False:
+        if check4 == False:
             print("\nLa entrada debe tener un minimo de",limite_bot,"caracteres y un máximo de",limite_top,"caracteres, intente de nuevo")
             continue
 
@@ -178,7 +178,7 @@ def entrada_float_rango(mensaje,lower,bigger):
         
         return entrada    
 
-def entrada_float_limite(mensaje,limite_top,limite_bot):
+def entrada_float_limite(mensaje,limite_bot,limite_top):
     while True:
         entrada = input(mensaje)
         
@@ -199,7 +199,7 @@ def entrada_float_limite(mensaje,limite_top,limite_bot):
         
         return entrada
 
-def entrada_float_rango_limite(mensaje,lower,bigger,limite_top,limite_bot):
+def entrada_float_rango_limite(mensaje,lower,bigger,limite_bot,limite_top):
     while True:
         entrada = input(mensaje)
         
@@ -219,7 +219,7 @@ def entrada_float_rango_limite(mensaje,lower,bigger,limite_top,limite_bot):
             continue    
         
         entrada, check4 = input_limitado(entrada, limite_top, limite_bot)
-        if check3 == False:
+        if check4 == False:
             print("\nLa entrada debe tener un minimo de",limite_bot,"caracteres y un máximo de",limite_top,"caracteres, intente de nuevo")
             continue
 
@@ -243,7 +243,7 @@ def entrada_str_simple(mensaje):
         
         return entrada
 
-def entrada_str_limite(mensaje,limite_top,limite_bot):
+def entrada_str_limite(mensaje,limite_bot,limite_top):
     while True:
         entrada = input(mensaje)
         
@@ -258,7 +258,7 @@ def entrada_str_limite(mensaje,limite_top,limite_bot):
             continue
         
         entrada, check3 = input_limitado(entrada,limite_top, limite_bot)
-        if check2 == False:
+        if check3 == False:
             print("\nLa entrada debe tener un minimo de",limite_bot,"caracteres y un máximo de",limite_top,"caracteres, intente de nuevo")
             continue
 
@@ -279,13 +279,13 @@ def entrada_str_no_numbers(mensaje):
             continue
 
         entrada, check3 = no_numbers_in_str(entrada)
-        if check2 == False:
+        if check3 == False:
             print("\nTipo de entrada no valida, intente de nuevo")
             continue
 
         return entrada 
 
-def entrada_str_limite_no_numbers(mensaje,limite_top,limite_bot):
+def entrada_str_limite_no_numbers(mensaje,limite_bot,limite_top):
     while True:
         entrada = input(mensaje)
         
@@ -300,14 +300,25 @@ def entrada_str_limite_no_numbers(mensaje,limite_top,limite_bot):
             continue
         
         entrada, check3 = input_limitado(entrada, limite_top, limite_bot)
-        if check2 == False:
+        if check3 == False:
             print("\nLa entrada debe tener un minimo de",limite_bot,"caracteres y un máximo de",limite_top,"caracteres, intente de nuevo")
             continue
 
         entrada, check4 = no_numbers_in_str(entrada)
-        if check2 == False:
+        if check4 == False:
             print("\nTipo de entrada no valida, intente de nuevo")
             continue
 
         return entrada 
 
+
+
+while True:
+
+    #print("\n",entrada_int_simple("\nEntrada int simple: "))
+
+    #print("\n",entrada_int_rango("\nEntrada int rango: ", 1, 5))
+
+    #print("\n",entrada_int_limite("\nEntrada int limite: ", 1, 6))
+
+    print("\n",entrada_int_rango_limite("\nEntrada int rango limite: ", 1, 5000, 2, 3))
