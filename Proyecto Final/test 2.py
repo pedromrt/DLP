@@ -51,7 +51,6 @@ def no_special_character(entrada, caracteres_permitidos=None):
 
 
 
-
 # TIPOS DE ENTRADAS
 
 # Entradas int
