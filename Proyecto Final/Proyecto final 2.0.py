@@ -92,11 +92,11 @@ def search_id ():
     
     carnet = value_int_input("\nIngrese el número de carnet del alumno: ", "\nTipo de entrada no válida. Ingrese un número de carnet valido: ")
     for i in range (len(data_base["carnets"])):
-            if data_base["carnets"][i] == carnet:
-                encontrado = True
-                break
-            else:
-                encontrado = False
+        if data_base["carnets"][i] == carnet:
+            encontrado = True
+            break
+        else:
+            encontrado = False
     
     return encontrado, i
 
