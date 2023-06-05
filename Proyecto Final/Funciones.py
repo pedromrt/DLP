@@ -1,8 +1,4 @@
 import re
-import json
-route_DB = "Proyecto Final/BaseDatos.txt"
-
-
 
 # TIPOS DE VADIACION: cada validacion devuelve un true o un false si esta se cumple o no
 
@@ -64,7 +60,6 @@ def no_special_character(entrada, caracteres_permitidos=None):
         return entrada, True
     else:
         return entrada, False
-
 
 
 # TIPOS DE ENTRADAS
@@ -160,7 +155,6 @@ def entrada_int_rango_limite(mensaje,lower,bigger,limite_bot,limite_top):
         return entrada    
 
 
-
 # Entradas float
 
 # Verifica que la entrada no contenga solo espacios y que sea de tipo float
@@ -250,7 +244,6 @@ def entrada_float_rango_limite(mensaje,lower,bigger,limite_bot,limite_top):
             continue
 
         return entrada    
-
 
 
 # Entradas str con validacion no_special_character
@@ -344,7 +337,6 @@ def entrada_str_limite_no_numbers_nc(mensaje,limite_bot,limite_top):
         return entrada 
 
 
-
 # Entradas str sin validacion no_special_character
 
 # Verifica que la entrada no contenga solo espacios
@@ -415,25 +407,6 @@ def entrada_str_limite_no_numbers(mensaje,limite_bot,limite_top):
         return entrada 
 
 
-
-# FUNCIONES DE GUARDADO
-
-# Lee el archivo base de datos y si este contiene informacion la guarda en data_base
-def readBD ():
-    global data_base
-    with open(route_DB, "r") as archivo:
-        if archivo.readline().strip():
-            with open(route_DB,"r") as archivo:
-                data_base = json.load(archivo)
-
-# Borra todos los datos del archivo base de datos y lo sobreescribe con los nuevos datos modificados
-def writeBD():
-    global data_base
-    with open(route_DB, "w") as archivo:
-        json.dump(data_base, archivo)
-
-
-
 # PRINT MENUS
 
 # Imprime el menu principal
@@ -463,48 +436,3 @@ def print_yes_no(question):
     print ("\n" + str(question))
     print ("\n1. Si")
     print ("2. No")
-
-
-
-# FUNCIONES EXTRAS
-
-# Por arreglar ----------------------------------------------------------------
-
-def duplicate_id ():
-    carnet = value_int_input("\nIngrese el carnet del alumno: ", "\nTipo de entrada no válida. Ingrese un número de carnet valido: ")
-
-    for i in range (len(data_base["carnets"])):
-        while data_base["carnets"][i] == carnet:    
-            carnet = value_int_input("\nCarnet duplicado, ingrese el carnet del alumno: ", "\nTipo de entrada no válida. Ingrese un número de carnet valido: ")
-    return carnet
-
-def new_search (menu,option):
-    again = value_int_input("\nIngrese el número de la opción que desea seleccionar: ", "\nTipo de entrada no válida. Ingrese el número de la opción que desea seleccionar: ")
-    again = range_options(again, 1, 2,"\nOpcion no valida, Ingrese el número de la opción que desea seleccionar: ", "\nTipo de entrada no válida. Ingrese el número de la opción que desea seleccionar: ")
-    if again == 1:
-        n = option
-    else:
-        n = 0 
-    return n
-
-def search_id ():
-    
-    carnet = value_int_input("\nIngrese el número de carnet del alumno: ", "\nTipo de entrada no válida. Ingrese un número de carnet valido: ")
-    for i in range (len(data_base["carnets"])):
-        if data_base["carnets"][i] == carnet:
-            encontrado = True
-            break
-        else:
-            encontrado = False
-    
-    return encontrado, i
-
-def add_score (msj1, msj2, msj3):
-    score = value_float_input(msj1, msj2)
-    score = range_options(score, 0, 10, msj3, msj2)
-    return score
-
-def average (index):
-    data_base["notas_promedios"][index] = (data_base["notas_examen_final"][index]*(EXAMENFINAL/100) + data_base["notas_actividad_1"][index]*(ACTIVIDAD1/100) + data_base["notas_actividad_2"][index]*(ACTIVIDAD2/100) + data_base["notas_tarea_1"][index]*(TAREA1/100) + data_base["notas_tarea_2"][index]*(TAREA2/100))
-    
-    return data_base["notas_promedios"][index]
