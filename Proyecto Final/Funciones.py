@@ -71,7 +71,7 @@ def no_special_character(entrada, caracteres_permitidos=None):
 
 # Entradas int
 
-# Verifica unicamente que la entrada no contenga solo espacios y que sea de tipo entero
+# Verifica que la entrada no contenga solo espacios y que sea de tipo entero
 def entrada_int_simple(mensaje):
     while True:
         entrada = input(mensaje)
@@ -163,7 +163,7 @@ def entrada_int_rango_limite(mensaje,lower,bigger,limite_bot,limite_top):
 
 # Entradas float
 
-# Verifica unicamente que la entrada no contenga solo espacios y que sea de tipo float
+# Verifica que la entrada no contenga solo espacios y que sea de tipo float
 def entrada_float_simple(mensaje):
     while True:
         entrada = input(mensaje)
