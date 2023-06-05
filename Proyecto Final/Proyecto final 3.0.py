@@ -43,10 +43,10 @@ def writeBD():
 
 # Valida que el carnet ingresado no este dentro de la base de datos
 def duplicate_id ():
-    carnet = entrada_int_rango("\nIngrese el carnet del alumno: ", 1, 99999)
+    carnet = funciones.entrada_int_rango("\nIngrese el carnet del alumno: ", 1, 99999)
     for i in range (len(data_base["carnets"])):
         while data_base["carnets"][i] == carnet:    
-            carnet = entrada_int_rango("\nCarnet duplicado, ingrese el carnet del alumno: ", 1, 99999)
+            carnet = funciones.entrada_int_rango("\nCarnet duplicado, ingrese el carnet del alumno: ", 1, 99999)
     return carnet
 
 # Consulta que opcion desea seleccionar (si o no)
@@ -54,7 +54,7 @@ def new_search (question,option):
     print ("\n" + str(question))
     print ("\n1. Si")
     print ("2. No")
-    again = entrada_int_rango("\nIngrese el número de la opción que desea seleccionar: ", 1, 2)
+    again = funciones.entrada_int_rango("\nIngrese el número de la opción que desea seleccionar: ", 1, 2)
     if again == 1:
         n = option
     else:
@@ -63,7 +63,7 @@ def new_search (question,option):
 
 # Busca un carnet dentro de la base de datos, si lo encuentra retorna un True y el indice si no devuelve un False
 def search_id ():
-    carnet = entrada_int_rango("\nIngrese el carnet del alumno: ", 1, 99999)
+    carnet = funciones.entrada_int_rango("\nIngrese el carnet del alumno: ", 1, 99999)
     for i in range (len(data_base["carnets"])):
         if data_base["carnets"][i] == carnet:
             encontrado = True
@@ -75,7 +75,7 @@ def search_id ():
 
 # Añadir una nueva nota
 def add_score (mensaje):
-    score = entrada_int_rango(mensaje, 0, 10)
+    score = funciones.entrada_int_rango(mensaje, 0, 10)
     return score
 
 # Calcula el promedio de notas de un alumno en base al indice del carnet
@@ -88,7 +88,171 @@ readBD ()
 
 # MAIN MENU
 
+while n != 8:
+    funciones.print_main_menu()
+    n = funciones.entrada_int_rango("\nIngrese el número de la opción que desea seleccionar: ", 1, 8)
 
+    while n == 1:
+        print ("\n\n1. AGREGAR ALUMNO")
+        
+        data_base["nombres"].append(funciones.entrada_str_no_numbers_nc("\nIngrese el nombre del alumno: "))
+        data_base["carnets"].append(duplicate_id())
+        data_base["grados"].append(funciones.entrada_int_simple("\nIngrese el grado del alumno: "))
+        data_base["notas_examen_final"].append(0)
+        data_base["notas_actividad_1"].append(0)
+        data_base["notas_actividad_2"].append(0)
+        data_base["notas_tarea_1"].append(0)
+        data_base["notas_tarea_2"].append(0)
+        data_base["notas_promedios"].append(0)
+
+        writeBD()
+
+        n = new_search("\nEstudiante archivado, desea realizar otro registro?", 1)
+
+    while n == 2:
+
+        print ("\n\n2. AGREGAR NOTAS DE ALUMNO")
+
+        encontrado, indice = search_id()
+        
+        if encontrado == True:
+            
+            data_base["notas_tarea_1"][indice] = add_score("\nIngrese la nota de la tarea #1: ")
+
+            data_base["notas_tarea_2"][indice] = add_score("\n\nIngrese la nota de la tarea #2: ")
+            
+            data_base["notas_actividad_1"][indice] = add_score("\n\nIngrese la nota de la actividad #1: ")
+
+            data_base["notas_actividad_2"][indice] = add_score("\n\nIngrese la nota de la actividad #2: ")
+
+            data_base["notas_examen_final"][indice] = add_score("\n\nIngrese la nota del examen final: ")
+
+            data_base["notas_promedios"][indice] = average(indice)
+        
+            writeBD()
+
+            n = new_search("\nNotas guardadas, desea realizar otro registro?", 2)
+        
+        else:
+
+            n = new_search("\nEl carnet no existe, desea realizar otra busqueda?", 2)
+
+    while n == 3:
+        
+        print ("\n\n3. MODIFICAR NOTAS DE ALUMNO")
+
+        encontrado, indice = search_id()
+
+        if encontrado == True:
+            
+            while True:
+                funciones.print_menu_2()
+                
+                f = funciones.entrada_int_rango("\nIngrese el número de la opción que desea seleccionar: ", 1, 6) 
+                
+                if f == 1:
+                    data_base["notas_tarea_1"][indice] = add_score("\nIngrese la nota de la tarea #1: ")
+                    
+                    data_base["notas_promedios"][indice] = average(indice)
+                    writeBD()
+
+                elif f == 2:
+                    data_base["notas_tarea_2"][indice] = add_score("\nIngrese la nota de la tarea #2: ")
+
+                    data_base["notas_promedios"][indice] = average(indice)
+                    writeBD()
+                
+                elif f == 3:
+                    data_base["notas_actividad_1"][indice] = add_score("\nIngrese la nota de la actividad #1: ")
+
+                    data_base["notas_promedios"][indice] = average(indice)
+                    writeBD()
+                
+                elif f == 4:
+                    data_base["notas_actividad_2"][indice] = add_score("\nIngrese la nota de la actividad #2: ")
+
+                    data_base["notas_promedios"][indice] = average(indice)
+                    writeBD()
+                
+                elif f == 5:
+                    data_base["notas_examen_final"][indice] = add_score("\nIngrese la nota del examen final: ")
+
+                    data_base["notas_promedios"][indice] = average(indice)
+                    writeBD()
+                
+                elif f == 6:
+                    break
+                
+                writeBD()
+
+            n = new_search("\nNotas guardadas, desea realizar modificar las notas de otro alumno?", 3)
+        
+        else:
+            
+            n = new_search("\nEl carnet no existe, desea realizar otra busqueda?", 3) 
+
+    while n == 4:
+        print ("\n\n4. ELIMINAR ALUMNO")
+        
+        encontrado, indice = search_id()
+
+        if encontrado == True:
+            
+            f = new_search("\nSeguro que desea eliminar al estudiante con el carnet 0" + str(data_base["carnets"][indice]) + " ?", 2)
+                
+            if f == 0:
+                n = new_search("\nDesea eliminar otro alumno?", 4)
+                   
+            else:
+
+                print("\nEl estudiante con el carnet 0" + str(data_base["carnets"][indice]) + " ha sido eliminado")  
+            
+                data_base["nombres"].pop(indice)
+                data_base["carnets"].pop(indice)
+                data_base["grados"].pop(indice)
+                data_base["notas_examen_final"].pop(indice)
+                data_base["notas_actividad_1"].pop(indice)
+                data_base["notas_actividad_2"].pop(indice)
+                data_base["notas_tarea_1"].pop(indice)
+                data_base["notas_tarea_2"].pop(indice)
+                data_base["notas_promedios"].pop(indice)
+
+                writeBD()
+                
+                n = new_search("\nDesea eliminar otro alumno?", 4)
+                
+        else:
+            n = new_search("\nEl carnet no existe, desea realizar otra busqueda?", 4)
+
+    if n == 5:
+        print ("\n\nLISTA DE APROBADOS\n")
+        
+        for i in range (len(data_base["notas_promedios"])):
+            if data_base["nombres"][i] == 0:
+                continue
+            if data_base["notas_promedios"][i] >= 7:
+                print(data_base["nombres"][i], round(data_base["notas_promedios"][i],2))
+
+    if n == 6:
+        print ("\n\nLISTA DE REPROBADOS\n")
+        
+        for i in range (len(data_base["notas_promedios"])):
+            if data_base["nombres"][i] == 0:
+                continue
+            if data_base["notas_promedios"][i] < 7:
+                print(data_base["nombres"][i], round(data_base["notas_promedios"][i],2))
+
+    if n == 7:
+        print ("\n\nLISTA DE NOTAS\n")
+        
+        for i in range (len(data_base["notas_promedios"])):
+            if data_base["nombres"][i] == 0:
+                continue
+            if data_base["notas_promedios"][i] >= 7:
+                estado = "Aprobado"
+            else:
+                estado = "Reprobado"
+            print(data_base["nombres"][i], round(data_base["notas_promedios"][i],2),estado)
 
 print("\nGuardando datos...")
 

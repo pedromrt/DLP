@@ -183,10 +183,10 @@ while n != 8:
         
             writeBD()
 
-            n = new_search(print_yes_no("\n\nNotas guardadas, desea realizar otro registro?"), 2)
+            n = new_search("\nNotas guardadas, desea realizar otro registro?", 2)
         
         else:
-            n = new_search(print_yes_no("\n\nEl carnet no existe, desea realizar otra busqueda?"), 2)
+            n = new_search("\nEl carnet no existe, desea realizar otra busqueda?", 2)
 
     while n == 3:
         print ("\n\n3. MODIFICAR NOTAS DE ALUMNO")
