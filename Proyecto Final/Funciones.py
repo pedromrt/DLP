@@ -66,23 +66,6 @@ def no_special_character(entrada, caracteres_permitidos=None):
 
 # Entradas int
 
-# Verifica que la entrada no contenga solo espacios y que sea de tipo entero
-def entrada_int_simple(mensaje):
-    while True:
-        entrada = input(mensaje)
-        
-        entrada, check1 = no_spaces(entrada)
-        if check1 == False:
-            print("\nNo se permiten entradas vacias, intente de nuevo")
-            continue
-        
-        entrada, check2 = value_int_input(entrada)
-        if check2 == False:
-            print("\nTipo de entrada no valida, intente de nuevo")
-            continue
-        
-        return entrada
-
 # Verifica que la entrada no contenga solo espacios, que sea de tipo entero y que este dentro de un rango de numeros
 def entrada_int_rango(mensaje,lower,bigger):
     while True:
@@ -105,74 +88,8 @@ def entrada_int_rango(mensaje,lower,bigger):
         
         return entrada    
 
-# Verifica que la entrada no contenga solo espacios, que sea de tipo entero y que tenga un minimo y maximo de caracteres
-def entrada_int_limite(mensaje,limite_bot,limite_top):
-    while True:
-        entrada = input(mensaje)
-        
-        entrada, check1 = no_spaces(entrada)
-        if check1 == False:
-            print("\nNo se permiten entradas vacias, intente de nuevo")
-            continue
-        
-        entrada, check2 = value_int_input(entrada)
-        if check2 == False:
-            print("\nTipo de entrada no valida, intente de nuevo")
-            continue
-
-        entrada, check3 = input_limitado(entrada, limite_top, limite_bot)
-        if check3 == False:
-            print("\nLa entrada debe tener un minimo de",limite_bot,"caracteres y un máximo de",limite_top,"caracteres, intente de nuevo")
-            continue
-        
-        return entrada
-
-# Verifica que la entrada no contenga solo espacios, que sea de tipo entero, que este dentro de un rango de numeros y que tenga un minimo y maximo de caracteres
-def entrada_int_rango_limite(mensaje,lower,bigger,limite_bot,limite_top):
-    while True:
-        entrada = input(mensaje)
-        
-        entrada, check1 = no_spaces(entrada)
-        if check1 == False:
-            print("\nNo se permiten entradas vacias, intente de nuevo")
-            continue
-        
-        entrada, check2 = value_int_input(entrada)
-        if check2 == False:
-            print("\nTipo de entrada no valida, intente de nuevo")
-            continue
-
-        entrada, check3 = range_options(entrada, lower, bigger)
-        if check3 == False:
-            print("\nEntrada fuera del rango de opciones, intente de nuevo")
-            continue    
-        
-        entrada, check4 = input_limitado(entrada, limite_top, limite_bot)
-        if check4 == False:
-            print("\nLa entrada debe tener un minimo de",limite_bot,"caracteres y un máximo de",limite_top,"caracteres, intente de nuevo")
-            continue
-
-        return entrada    
-
 
 # Entradas float
-
-# Verifica que la entrada no contenga solo espacios y que sea de tipo float
-def entrada_float_simple(mensaje):
-    while True:
-        entrada = input(mensaje)
-        
-        entrada, check1 = no_spaces(entrada)
-        if check1 == False:
-            print("\nNo se permiten entradas vacias, intente de nuevo")
-            continue
-        
-        entrada, check2 = value_float_input(entrada)
-        if check2 == False:
-            print("\nTipo de entrada no valida, intente de nuevo")
-            continue
-        
-        return entrada
 
 # Verifica que la entrada no contenga solo espacios, que sea de tipo float y que este dentro de un rango de numeros
 def entrada_float_rango(mensaje,lower,bigger):
@@ -196,96 +113,8 @@ def entrada_float_rango(mensaje,lower,bigger):
         
         return entrada    
 
-# Verifica que la entrada no contenga solo espacios, que sea de tipo float y que tenga un minimo y maximo de caracteres
-def entrada_float_limite(mensaje,limite_bot,limite_top):
-    while True:
-        entrada = input(mensaje)
-        
-        entrada, check1 = no_spaces(entrada)
-        if check1 == False:
-            print("\nNo se permiten entradas vacias, intente de nuevo")
-            continue
-        
-        entrada, check2 = value_float_input(entrada)
-        if check2 == False:
-            print("\nTipo de entrada no valida, intente de nuevo")
-            continue
 
-        entrada, check3 = input_limitado(entrada, limite_top, limite_bot)
-        if check3 == False:
-            print("\nLa entrada debe tener un minimo de",limite_bot,"caracteres y un máximo de",limite_top,"caracteres, intente de nuevo")
-            continue
-        
-        return entrada
-
-# Verifica que la entrada no contenga solo espacios, que sea de tipo float, que este dentro de un rango de numeros y que tenga un minimo y maximo de caracteres
-def entrada_float_rango_limite(mensaje,lower,bigger,limite_bot,limite_top):
-    while True:
-        entrada = input(mensaje)
-        
-        entrada, check1 = no_spaces(entrada)
-        if check1 == False:
-            print("\nNo se permiten entradas vacias, intente de nuevo")
-            continue
-        
-        entrada, check2 = value_float_input(entrada)
-        if check2 == False:
-            print("\nTipo de entrada no valida, intente de nuevo")
-            continue
-
-        entrada, check3 = range_options(entrada, lower, bigger)
-        if check3 == False:
-            print("\nEntrada fuera del rango de opciones, intente de nuevo")
-            continue    
-        
-        entrada, check4 = input_limitado(entrada, limite_top, limite_bot)
-        if check4 == False:
-            print("\nLa entrada debe tener un minimo de",limite_bot,"caracteres y un máximo de",limite_top,"caracteres, intente de nuevo")
-            continue
-
-        return entrada    
-
-
-# Entradas str con validacion no_special_character
-
-# Verifica que la entrada no contenga solo espacios y que no contenga caracteres especiales
-def entrada_str_simple_nc(mensaje):
-    while True:
-        entrada = input(mensaje)
-        
-        entrada, check1 = no_spaces(entrada)
-        if check1 == False:
-            print("\nNo se permiten entradas vacias, intente de nuevo")
-            continue
-        
-        entrada, check2 = no_special_character(entrada)
-        if check2 == False:
-            print("\nTipo de entrada no valida, intente de nuevo")
-            continue
-        
-        return entrada
-
-# Verifica que la entrada no contenga solo espacios, que no contenga caracteres especiales y que tenga un minimo y un maximo de caracters
-def entrada_str_limite_nc(mensaje,limite_bot,limite_top):
-    while True:
-        entrada = input(mensaje)
-        
-        entrada, check1 = no_spaces(entrada)
-        if check1 == False:
-            print("\nNo se permiten entradas vacias, intente de nuevo")
-            continue
-        
-        entrada, check2 = no_special_character(entrada)
-        if check2 == False:
-            print("\nTipo de entrada no valida, intente de nuevo")
-            continue
-        
-        entrada, check3 = input_limitado(entrada,limite_top, limite_bot)
-        if check3 == False:
-            print("\nLa entrada debe tener un minimo de",limite_bot,"caracteres y un máximo de",limite_top,"caracteres, intente de nuevo")
-            continue
-
-        return entrada    
+# Entradas str
 
 # Verifica que la entrada no contenga solo espacios, que no contenga caracteres especiales y que no contenga numeros
 def entrada_str_no_numbers_nc(mensaje):
@@ -300,103 +129,6 @@ def entrada_str_no_numbers_nc(mensaje):
         entrada, check2 = no_special_character(entrada)
         if check2 == False:
             print("\nTipo de entrada no valida, intente de nuevo")
-            continue
-
-        entrada, check3 = no_numbers_in_str(entrada)
-        if check3 == False:
-            print("\nTipo de entrada no valida, intente de nuevo")
-            continue
-
-        return entrada 
-
-# Verifica que la entrada no contenga solo espacios, que no contenga caracteres especiales, que tenga un minimo y un maximo de caracters y que no contenga numeros
-def entrada_str_limite_no_numbers_nc(mensaje,limite_bot,limite_top):
-    while True:
-        entrada = input(mensaje)
-        
-        entrada, check1 = no_spaces(entrada)
-        if check1 == False:
-            print("\nNo se permiten entradas vacias, intente de nuevo")
-            continue
-        
-        entrada, check2 = no_special_character(entrada)
-        if check2 == False:
-            print("\nTipo de entrada no valida, intente de nuevo")
-            continue
-        
-        entrada, check3 = input_limitado(entrada, limite_top, limite_bot)
-        if check3 == False:
-            print("\nLa entrada debe tener un minimo de",limite_bot,"caracteres y un máximo de",limite_top,"caracteres, intente de nuevo")
-            continue
-
-        entrada, check4 = no_numbers_in_str(entrada)
-        if check4 == False:
-            print("\nTipo de entrada no valida, intente de nuevo")
-            continue
-
-        return entrada 
-
-
-# Entradas str sin validacion no_special_character
-
-# Verifica que la entrada no contenga solo espacios
-def entrada_str_simple_(mensaje):
-    while True:
-        entrada = input(mensaje)
-        
-        entrada, check1 = no_spaces(entrada)
-        if check1 == False:
-            print("\nNo se permiten entradas vacias, intente de nuevo")
-            continue
-        
-        return entrada
-
-# Verifica que la entrada no contenga solo espacios y que tenga un minimo y un maximo de caracters
-def entrada_str_limite(mensaje,limite_bot,limite_top):
-    while True:
-        entrada = input(mensaje)
-        
-        entrada, check1 = no_spaces(entrada)
-        if check1 == False:
-            print("\nNo se permiten entradas vacias, intente de nuevo")
-            continue
-
-        entrada, check2 = input_limitado(entrada,limite_top, limite_bot)
-        if check2 == False:
-            print("\nLa entrada debe tener un minimo de",limite_bot,"caracteres y un máximo de",limite_top,"caracteres, intente de nuevo")
-            continue
-
-        return entrada    
-
-# Verifica que la entrada no contenga solo espacios y que no contenga numeros    
-def entrada_str_no_numbers(mensaje):
-    while True:
-        entrada = input(mensaje)
-        
-        entrada, check1 = no_spaces(entrada)
-        if check1 == False:
-            print("\nNo se permiten entradas vacias, intente de nuevo")
-            continue
-        
-        entrada, check2 = no_numbers_in_str(entrada)
-        if check2 == False:
-            print("\nTipo de entrada no valida, intente de nuevo")
-            continue
-
-        return entrada 
-
-# Verifica que la entrada no contenga solo espacios, que tenga un minimo y un maximo de caracters y que no contenga numeros
-def entrada_str_limite_no_numbers(mensaje,limite_bot,limite_top):
-    while True:
-        entrada = input(mensaje)
-        
-        entrada, check1 = no_spaces(entrada)
-        if check1 == False:
-            print("\nNo se permiten entradas vacias, intente de nuevo")
-            continue
-        entrada, check2 = input_limitado(entrada, limite_top, limite_bot)
-        if check2 == False:
-            print("\nLa entrada debe tener un minimo de",limite_bot,"caracteres y un máximo de",limite_top,"caracteres, intente de nuevo")
             continue
 
         entrada, check3 = no_numbers_in_str(entrada)
