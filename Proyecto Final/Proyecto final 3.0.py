@@ -75,7 +75,7 @@ def search_id ():
 
 # Añadir una nueva nota
 def add_score (mensaje):
-    score = funciones.entrada_int_rango(mensaje, 0, 10)
+    score = funciones.entrada_float_rango(mensaje, 0, 10)
     return score
 
 # Calcula el promedio de notas de un alumno en base al indice del carnet
@@ -97,7 +97,7 @@ while n != 8:
         
         data_base["nombres"].append(funciones.entrada_str_no_numbers_nc("\nIngrese el nombre del alumno: "))
         data_base["carnets"].append(duplicate_id())
-        data_base["grados"].append(funciones.entrada_int_simple("\nIngrese el grado del alumno: "))
+        data_base["grados"].append(funciones.entrada_int_rango("\nIngrese el grado del alumno: ",1,9))
         data_base["notas_examen_final"].append(0)
         data_base["notas_actividad_1"].append(0)
         data_base["notas_actividad_2"].append(0)
