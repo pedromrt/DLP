@@ -33,14 +33,6 @@ def range_options(entrada, lower, bigger):
     else:
         return entrada, True
 
-# Valida que la entrada contenga un minimo o un maximo de caracteres donde limite_bot es el minimo y limite_top es el maximo
-def input_limitado(entrada, limite_top, limite_bot):
-    entrada = str(entrada)
-    if len(entrada) > limite_top or len(entrada) < limite_bot:
-        return entrada, False
-    else:
-        return entrada, True
-
 # Valida que la entrada no contenga numeros
 def no_numbers_in_str(entrada):
     entrada = str(entrada)
