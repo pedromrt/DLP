@@ -36,10 +36,13 @@ def range_options(entrada, lower, bigger):
 # Valida que la entrada no contenga numeros
 def no_numbers_in_str(entrada):
     entrada = str(entrada)
-    if entrada.isdigit():
-        return entrada, False
-    else:
-        return entrada, True
+    for letra in entrada:        
+        if letra.isdigit():
+            check = False
+            break
+        else:
+            check = True
+    return entrada, check
 
 # Valida que la entrada no contenga caracteres especiales
 def no_special_character(entrada, caracteres_permitidos=None):
@@ -118,7 +121,7 @@ def entrada_str_no_numbers_nc(mensaje):
             print("\nNo se permiten entradas vacias, intente de nuevo")
             continue
         
-        entrada, check2 = no_special_character(entrada)
+        entrada, check2 = no_special_character(entrada," ")
         if check2 == False:
             print("\nTipo de entrada no valida, intente de nuevo")
             continue
