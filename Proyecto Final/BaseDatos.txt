@@ -1,1 +1,0 @@
-{"nombres": [0, "pedro"], "carnets": [0, 1], "grados": [0, 10], "notas_examen_final": [0, 0], "notas_actividad_1": [0, 0], "notas_actividad_2": [0, 0], "notas_tarea_1": [0, 0], "notas_tarea_2": [0, 0], "notas_promedios": [0, 0]}
