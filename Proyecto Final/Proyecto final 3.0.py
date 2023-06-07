@@ -259,3 +259,5 @@ print("\nGuardando datos...")
 writeBD()
 
 print ("\nPrograma Finalizado...\n")
+
+#Creditos Eduardo Deleón
