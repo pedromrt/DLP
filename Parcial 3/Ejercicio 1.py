@@ -19,14 +19,6 @@ def value_int_input(entrada):
     except ValueError:
         return entrada, False
 
-# Valida que la entrada sea de tipo float:
-def value_float_input(entrada):
-    try:
-        entrada = float(entrada)
-        return entrada, True
-    except ValueError:
-        return entrada, False
-
 # Valida que la entrada se encuentre dentro de un rango de numeros donde lower es el mas bajo y bigger el mas alto permitido
 def range_options(entrada, lower, bigger):
     if entrada < lower or entrada > bigger:
