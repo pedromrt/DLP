@@ -258,7 +258,7 @@ def entrada_str_simple_nc(mensaje):
             print("\nNo se permiten entradas vacias, intente de nuevo")
             continue
         
-        entrada, check2 = no_special_character(entrada)
+        entrada, check2 = no_special_character(entrada," ")
         if check2 == False:
             print("\nTipo de entrada no valida, intente de nuevo")
             continue
@@ -275,7 +275,7 @@ def entrada_str_limite_nc(mensaje,limite_bot,limite_top):
             print("\nNo se permiten entradas vacias, intente de nuevo")
             continue
         
-        entrada, check2 = no_special_character(entrada)
+        entrada, check2 = no_special_character(entrada," ")
         if check2 == False:
             print("\nTipo de entrada no valida, intente de nuevo")
             continue
@@ -297,7 +297,7 @@ def entrada_str_no_numbers_nc(mensaje):
             print("\nNo se permiten entradas vacias, intente de nuevo")
             continue
         
-        entrada, check2 = no_special_character(entrada)
+        entrada, check2 = no_special_character(entrada," ")
         if check2 == False:
             print("\nTipo de entrada no valida, intente de nuevo")
             continue
@@ -319,7 +319,7 @@ def entrada_str_limite_no_numbers_nc(mensaje,limite_bot,limite_top):
             print("\nNo se permiten entradas vacias, intente de nuevo")
             continue
         
-        entrada, check2 = no_special_character(entrada)
+        entrada, check2 = no_special_character(entrada," ")
         if check2 == False:
             print("\nTipo de entrada no valida, intente de nuevo")
             continue
