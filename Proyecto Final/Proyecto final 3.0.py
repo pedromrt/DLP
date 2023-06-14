@@ -99,11 +99,12 @@ while n != 8:
     n = funciones.entrada_int_rango("\nIngrese el número de la opción que desea seleccionar: ", 1, 8)
 
     while n == 1:
+        
         print ("\n\n1. AGREGAR ALUMNO")
         
         data_base["nombres"].append(funciones.entrada_str_no_numbers_nc("\nIngrese el nombre del alumno: "))
         data_base["carnets"].append(duplicate_id())
-        data_base["grados"].append(funciones.entrada_int_rango("\nIngrese el grado del alumno: ",1,9))
+        data_base["grados"].append(funciones.entrada_int_rango("\nIngrese el numero del grado del alumno (Este debe estar entre 1° y 9°): ",1,9))
         data_base["notas_examen_final"].append(0)
         data_base["notas_actividad_1"].append(0)
         data_base["notas_actividad_2"].append(0)
