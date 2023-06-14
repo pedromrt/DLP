@@ -240,14 +240,14 @@ while n != 8:
                 print(data_base["nombres"][i], round(data_base["notas_promedios"][i],2))
                 average_approved += data_base["notas_promedios"][i]
                 count_approved += 1
+        
 
-        if count_approved != 0:
-            average_approved = average_approved / count_approved
-        else:
+        if count_approved == 0:
             average_approved = average_approved / 1
+        else:
+            average_approved = average_approved / count_approved
         
         print ("\nLa nota promedio de los estudiantes aprobados es de " + str(average_approved))
-
 
     if n == 6:
         print ("\n\nLISTA DE REPROBADOS\n")
@@ -260,10 +260,11 @@ while n != 8:
                 average_reproved += data_base["notas_promedios"][i]
                 count_reproved += 1
         
-        if count_reproved != 0:
-            average_reproved = average_reproved / count_reproved
-        else:
+        if count_reproved == 0:
             average_reproved = average_reproved / 1
+        else:
+            average_reproved = average_reproved / count_reproved
+
         
         print ("\nLa nota promedio de los estudiantes reprobados es de " + str(average_reproved))                
 
@@ -288,7 +289,6 @@ while n != 8:
 
 
         print ("\nLa nota promedio de todos los estudiantes es de " + str(average_general))                
-
 
 print("\nGuardando datos...")
 
