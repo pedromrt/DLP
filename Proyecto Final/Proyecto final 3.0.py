@@ -4,12 +4,18 @@ import funciones
 route_DB = "Proyecto Final/BaseDatos.txt"
 n = 0
 f = 1
+average_approved = 0
+average_reproved = 0
+average_general = 0
+count_approved = 0
+count_reproved = 0
+
 EXAMENFINAL = 40
 ACTIVIDAD1 = 20
 ACTIVIDAD2 = 20
 TAREA1 = 10
 TAREA2 = 10
-
+ 
 data_base = {    
     "nombres" : [0],
     "carnets" : [0],
@@ -232,6 +238,16 @@ while n != 8:
                 continue
             if data_base["notas_promedios"][i] >= 7:
                 print(data_base["nombres"][i], round(data_base["notas_promedios"][i],2))
+                average_approved += data_base["notas_promedios"][i]
+                count_approved += 1
+
+        if count_approved != 0:
+            average_approved = average_approved / count_approved
+        else:
+            average_approved = average_approved / 1
+        
+        print ("\nLa nota promedio de los estudiantes aprobados es de " + str(average_approved))
+
 
     if n == 6:
         print ("\n\nLISTA DE REPROBADOS\n")
@@ -241,6 +257,15 @@ while n != 8:
                 continue
             if data_base["notas_promedios"][i] < 7:
                 print(data_base["nombres"][i], round(data_base["notas_promedios"][i],2))
+                average_reproved += data_base["notas_promedios"][i]
+                count_reproved += 1
+        
+        if count_reproved != 0:
+            average_reproved = average_reproved / count_reproved
+        else:
+            average_reproved = average_reproved / 1
+        
+        print ("\nLa nota promedio de los estudiantes reprobados es de " + str(average_reproved))                
 
     if n == 7:
         print ("\n\nLISTA DE NOTAS\n")
@@ -253,6 +278,17 @@ while n != 8:
             else:
                 estado = "Reprobado"
             print(data_base["nombres"][i], round(data_base["notas_promedios"][i],2),estado)
+
+            average_general += data_base["notas_promedios"][i]
+        
+        if (len(data_base["notas_promedios"]) - 1) != 0:
+            average_general = average_general / (len(data_base["notas_promedios"]) - 1)
+        else:
+            average_general = average_general / 1
+
+
+        print ("\nLa nota promedio de todos los estudiantes es de " + str(average_general))                
+
 
 print("\nGuardando datos...")
 
