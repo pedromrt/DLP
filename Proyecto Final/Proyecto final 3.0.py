@@ -50,9 +50,9 @@ def writeBD():
 # Valida que el carnet ingresado no este dentro de la base de datos
 def duplicate_id ():
     carnet = funciones.entrada_int_rango("\nIngrese el carnet del alumno: ", 1, 99999)
-    for i in range (len(data_base["carnets"])):
-        while data_base["carnets"][i] == carnet:    
-            carnet = funciones.entrada_int_rango("\nCarnet duplicado, ingrese el carnet del alumno: ", 1, 99999)
+    while carnet in data_base["carnets"]:
+        carnet = funciones.entrada_int_rango("\nCarnet duplicado, ingrese el carnet del alumno: ", 1, 99999)
+        
     return carnet
 
 # Consulta que opcion desea seleccionar (si o no)
