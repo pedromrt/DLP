@@ -248,7 +248,7 @@ while n != 8:
         else:
             average_approved = average_approved / count_approved
         
-        print ("\nLa nota promedio de los estudiantes aprobados es de " + str(average_approved))
+        print ("\nLa nota promedio de los estudiantes aprobados es de " + str(round(average_approved,2)))
 
     if n == 6:
         print ("\n\nLISTA DE REPROBADOS\n")
@@ -267,7 +267,7 @@ while n != 8:
             average_reproved = average_reproved / count_reproved
 
         
-        print ("\nLa nota promedio de los estudiantes reprobados es de " + str(average_reproved))                
+        print ("\nLa nota promedio de los estudiantes reprobados es de " + str(round(average_reproved,2)))                
 
     if n == 7:
         print ("\n\nLISTA DE NOTAS\n")
@@ -289,7 +289,7 @@ while n != 8:
             average_general = average_general / 1
 
 
-        print ("\nLa nota promedio de todos los estudiantes es de " + str(average_general))                
+        print ("\nLa nota promedio de todos los estudiantes es de " + str(round(average_general,2)))              
 
 print("\nGuardando datos...")
 
